@@ -1,0 +1,70 @@
+.header {
+  position: relative;
+  z-index: 10;
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+  padding-top: 55px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  width: 15%;
+}
+.logo__link {
+  font-size: 36px;
+  font-weight: 800;
+  transition: color 0.2s;
+    &:hover {
+      color: $orange;
+      transition: color 0.2s;
+    }
+}
+.nav {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+}
+.nav-list {
+  display: flex;
+  height: 100%;
+}
+.nav-list__item {
+  margin-left: 55px;
+  height: 100%;
+  transition: color 0.2s;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:hover {
+      color: $orange;
+      transition: color 0.2s;
+    }
+}
+.social {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+}
+.social__item {
+  margin-left: 40px;
+    &:first-child {
+      margin-left: 0;
+    }
+}
+.social__link {
+  display: flex;
+  align-items: center;
+}
+.social__svg {
+  width: 25px;
+  height: 25px;
+  fill: #fff;
+  transition: fill 0.2s;
+    &:hover {
+      fill: $orange;
+      transition: fill 0.2s;
+    }
+}

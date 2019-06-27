@@ -1,0 +1,47 @@
+include ./mixins.pug
+
+<!DOCTYPE html>
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(http-equiv="X-UA-Compatible", content="ie=edge")
+		title Portfolio | main page
+	body
+		.wrapper
+			.main
+				.main__title-wrap
+					h2.main__subtitle Личный сайт веб&nbsp;разработчика
+					h1.main__title Обжигалов Андрей
+				+image('content/main/main-train.png', 'main__train-img')
+				.container
+					header.header
+						.logo
+							a.logo__link АО
+						nav.nav
+							ul.nav-list
+								li.nav-list__item
+									a.nav__link Главная
+								li.nav-list__item
+									a.nav__link Обо мне
+								li.nav-list__item
+									a.nav__link Навыки
+								li.nav-list__item
+									a.nav__link Работы
+								li.nav-list__item
+									a.nav__link Отзывы
+								li.nav-list__item
+									a.nav__link Связаться
+						ul.social
+							li.social__item
+								a.social__link
+									+icon('insta', 'social__svg')
+							li.social__item
+								a.social__link
+									+icon('vk', 'social__svg')
+							li.social__item
+								a.social__link
+									+icon('github', 'social__svg')
+					.scrolldown 
+						.lol Скролл
+						+icon('scroll', 'scrolldown__svg')
