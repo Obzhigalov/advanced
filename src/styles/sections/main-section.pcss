@@ -1,13 +1,11 @@
 .main {
-  height: 100%;
-  width: 100%;
   position: relative;
   background-image: url(‘~images/content/main/mountains.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
 .main .container {
-  z-index: 10;
+  z-index: 25;
   position: relative;
   height: 100%;
 }
@@ -20,6 +18,7 @@
 .main__title-wrap {
   z-index: 5;
   display: flex;
+  justify-content: center;
   position: absolute;
   top: 46%;
   left: 50%;
@@ -36,7 +35,9 @@
   max-width: 500px;
 }
 .main__subtitle {
-  position: relative;
+  position: absolute;
+  left: -0;
+  transform: translateX(-110%);
   margin-top: 10px;
   margin-right: 65px;
   text-align: right;
@@ -53,7 +54,6 @@
   width: 100%;
 }
 .scrolldown {
-  z-index: 20;
   color: #fff;
   position: absolute;
   display: flex;

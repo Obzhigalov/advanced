@@ -9,7 +9,7 @@ html(lang="en")
 		title Portfolio | main page
 	body
 		.wrapper
-			.main
+			section.main
 				.main__title-wrap
 					h2.main__subtitle Личный сайт веб&nbsp;разработчика
 					h1.main__title Обжигалов Андрей
@@ -43,5 +43,29 @@ html(lang="en")
 								a.social__link
 									+icon('github', 'social__svg')
 					.scrolldown 
-						.lol Скролл
+						.scrolldown__text Скролл
 						+icon('scroll', 'scrolldown__svg')
+			section.about
+				+image('content/about/about-bg-grass.png', 'about-bg-grass')
+				+image('content/about/about-bg-matrix.png', 'about-bg-matrix')
+				.about-bg-gradient
+				.container
+					.about-content
+						.about-content__column
+							.about-content__img-wrap
+								+image('content/about/avatar.jpg', 'about-content__img')
+							.about-content__general
+								.about-content__questions
+									.about-content__question Проживаю:
+									.about-content__question Возраст:
+									.about-content__question Родился:
+								.about-content__answers
+									.about-content__answer Москва
+									.about-content__answer 20
+									.about-content__answer 8 декабря 1998
+						.about-content__column
+							.about-content__descr Привет, меня зовут
+								h3.about__title Обжигалов Андрей
+								.about-content__text Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+							.about-content__tip Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+								+image('content/about/star.png', 'about-content__star')
