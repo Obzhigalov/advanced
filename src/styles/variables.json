@@ -7,5 +7,7 @@
   "bp-phones": "480px",
   "orange": "#ef8900",
   "dark-grey": "#3d4143",
-  "grey": "#75787a"
+  "grey": "#75787a",
+  "dark-blue": "#2b3948",
+  "slide": "[1,2,3,4]"
 }

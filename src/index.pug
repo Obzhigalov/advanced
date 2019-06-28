@@ -113,3 +113,32 @@ html(lang="en")
 									svg.percent(viewbox='0 0 100 100', preserveAspectRatio='none')
 										circle(cx='50', cy='50', r='40', class='skills-circle skills-circle__under')
 										circle(cx='50', cy='50', r='40', class='skills-circle skills-circle__upper', style='animation-delay: -30s')
+			section.portfolio
+				.container
+					.portfolio__title Мои работы
+					.slider-wrap
+						.slider
+							ul.slider-list
+								li.slider-list__item(data-slide='1', class='slider-list__item--active')
+								li.slider-list__item(data-slide='2')
+								li.slider-list__item(data-slide='3')
+								li.slider-list__item(data-slide='4')
+								.slider__switch-wrap
+									.slider__switch(class="slider__switch-next")
+										.slider__arrow-next
+									.slider__switch(class="slider__switch-prev")
+										.slider__arrow-prev(class="slider__arrow-prev--denied")
+						.decription-wrap
+							.slide-num 1
+							.decription
+								ul.code-link-list
+									li.code-link-list__item HTML
+									li.code-link-list__item CSS
+									li.code-link-list__item Javacript
+								.description-content
+									h4.description__title Сайт школы образования
+									.description__info Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+									a.description-link Посмотреть сайт
+										+icon('link', 'description-link__svg')
+
+					
