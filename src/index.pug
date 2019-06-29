@@ -1,7 +1,7 @@
 include ./mixins.pug
 
 <!DOCTYPE html>
-html(lang="en")
+html(lang="ru")
 	head
 		meta(charset="UTF-8")
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
@@ -9,136 +9,9 @@ html(lang="en")
 		title Portfolio | main page
 	body
 		.wrapper
-			section.main
-				.main__title-wrap
-					h2.main__subtitle Личный сайт веб&nbsp;разработчика
-					h1.main__title Обжигалов Андрей
-				+image('content/main/main-train.png', 'main__train-img')
-				.container
-					header.header
-						.logo
-							a.logo__link АО
-						nav.nav
-							ul.nav-list
-								li.nav-list__item
-									a.nav__link Главная
-								li.nav-list__item
-									a.nav__link Обо мне
-								li.nav-list__item
-									a.nav__link Навыки
-								li.nav-list__item
-									a.nav__link Работы
-								li.nav-list__item
-									a.nav__link Отзывы
-								li.nav-list__item
-									a.nav__link Связаться
-						ul.social
-							li.social__item
-								a.social__link
-									+icon('insta', 'social__svg')
-							li.social__item
-								a.social__link
-									+icon('vk', 'social__svg')
-							li.social__item
-								a.social__link
-									+icon('github', 'social__svg')
-					.scrolldown 
-						.scrolldown__text Скролл
-						+icon('scroll', 'scrolldown__svg')
-			section.about
-				+image('content/about/about-bg-grass.png', 'about-bg-grass')
-				+image('content/about/about-bg-matrix.png', 'about-bg-matrix')
-				.about-bg-gradient
-				.container
-					.about-content
-						.about-content__column
-							.about-content__img-wrap
-								+image('content/about/avatar.jpg', 'about-content__img')
-							.about-content__general
-								.about-content__questions
-									.about-content__question Проживаю:
-									.about-content__question Возраст:
-									.about-content__question Родился:
-								.about-content__answers
-									.about-content__answer Москва
-									.about-content__answer 20
-									.about-content__answer 8 декабря 1998
-						.about-content__column
-							.about-content__descr Привет, меня зовут
-								h3.about__title Обжигалов Андрей
-								.about-content__text Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
-							.about-content__tip Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
-								+image('content/about/star.png', 'about-content__star')
-			section.skills
-				+image('content/skills/clipboard.png', 'skills__clipboard')
-				.container
-					h2.skills__title Чем я могу быть полезен вам
-					h3.skills__descr Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
-					.skills__grid
-						.skills__wrap
-							h4.skills__subtitle Front-end
-							ul.skills-list
-								li.skills-list__item HTML5
-									svg.percent(viewbox='0 0 100 100', preserveAspectRatio='none')
-										circle(cx='50', cy='50', r='40', class='skills-circle skills-circle__under')
-										circle(cx='50', cy='50', r='40', class='skills-circle skills-circle__upper', style='animation-delay: -18s')
-								li.skills-list__item CSS3
-									svg.percent(viewbox='0 0 100 100', preserveAspectRatio='none')
-										circle(cx='50', cy='50', r='40', class='skills-circle skills-circle__under')
-										circle(cx='50', cy='50', r='40', class='skills-circle skills-circle__upper', style='animation-delay: -10s')
-								li.skills-list__item Js
-									svg.percent(viewbox='0 0 100 100', preserveAspectRatio='none')
-										circle(cx='50', cy='50', r='40', class='skills-circle skills-circle__under')
-										circle(cx='50', cy='50', r='40', class='skills-circle skills-circle__upper', style='animation-delay: -53s')
-								li.skills-list__item Jquery и Vue.js
-									svg.percent(viewbox='0 0 100 100', preserveAspectRatio='none')
-										circle(cx='50', cy='50', r='40', class='skills-circle skills-circle__under')
-										circle(cx='50', cy='50', r='40', class='skills-circle skills-circle__upper', style='animation-delay: -19s')
-						.skills__wrap
-							h4.skills__subtitle Workflow
-							ul.skills-list
-								li.skills-list__item GIT
-									svg.percent(viewbox='0 0 100 100', preserveAspectRatio='none')
-										circle(cx='50', cy='50', r='40', class='skills-circle skills-circle__under')
-										circle(cx='50', cy='50', r='40', class='skills-circle skills-circle__upper', style='animation-delay: -10s')
-								li.skills-list__item Terminal
-									svg.percent(viewbox='0 0 100 100', preserveAspectRatio='none')
-										circle(cx='50', cy='50', r='40', class='skills-circle skills-circle__under')
-										circle(cx='50', cy='50', r='40', class='skills-circle skills-circle__upper', style='animation-delay: -19s')
-								li.skills-list__item Gulp
-									svg.percent(viewbox='0 0 100 100', preserveAspectRatio='none')
-										circle(cx='50', cy='50', r='40', class='skills-circle skills-circle__under')
-										circle(cx='50', cy='50', r='40', class='skills-circle skills-circle__upper', style='animation-delay: -35s')
-								li.skills-list__item Webpack
-									svg.percent(viewbox='0 0 100 100', preserveAspectRatio='none')
-										circle(cx='50', cy='50', r='40', class='skills-circle skills-circle__under')
-										circle(cx='50', cy='50', r='40', class='skills-circle skills-circle__upper', style='animation-delay: -30s')
-			section.portfolio
-				.container
-					.portfolio__title Мои работы
-					.slider-wrap
-						.slider
-							ul.slider-list
-								li.slider-list__item(data-slide='1', class='slider-list__item--active')
-								li.slider-list__item(data-slide='2')
-								li.slider-list__item(data-slide='3')
-								li.slider-list__item(data-slide='4')
-								.slider__switch-wrap
-									.slider__switch(class="slider__switch-next")
-										.slider__arrow-next
-									.slider__switch(class="slider__switch-prev")
-										.slider__arrow-prev(class="slider__arrow-prev--denied")
-						.decription-wrap
-							.slide-num 1
-							.decription
-								ul.code-link-list
-									li.code-link-list__item HTML
-									li.code-link-list__item CSS
-									li.code-link-list__item Javacript
-								.description-content
-									h4.description__title Сайт школы образования
-									.description__info Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
-									a.description-link Посмотреть сайт
-										+icon('link', 'description-link__svg')
+			include /components/section-main.pug
+			include /components/section-about.pug
+			include /components/section-skills.pug
+			include /components/section-portfolio.pug
 
 					

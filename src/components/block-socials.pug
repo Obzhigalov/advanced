@@ -1,0 +1,7 @@
+mixin socials(mod)
+  ul(class=`social social--${mod}`)
+    - var items = [{name: 'insta', href: '#'}, {name: 'vk', href: '#'}, {name:'github', href: '#'}]
+    each item in items
+      li.social__item
+        a(href=item.href).social__link
+          +icon(`${item.name}`, 'social__svg')

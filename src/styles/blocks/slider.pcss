@@ -63,26 +63,14 @@
     border-right: 2px solid $grey;
   border-bottom: 2px solid $grey;
 }
-li[data-slide='1'] {
-  background-image: url(‘~images/content/portfolio/project-1.png);
+@each $item in 1,2,3,4 {  
+  li[data-slide='#{$item}'] {
+  background-image: url(‘~images/content/portfolio/project-#{$item}.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
-li[data-slide='2'] {
-  background-image: url(‘~images/content/portfolio/project-2.png);
-  background-repeat: no-repeat;
-  background-size: cover;
 }
-li[data-slide='3'] {
-  background-image: url(‘~images/content/portfolio/project-3.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-li[data-slide='4'] {
-  background-image: url(‘~images/content/portfolio/project-4.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+
 .decription-wrap {
   width: 34%;
   display: flex;

@@ -9,8 +9,11 @@
   justify-content: space-between;
   align-items: center;
 }
+.logo--header {
+    width: 15%;
+}
 .logo {
-  width: 15%;
+
 }
 .logo__link {
   font-size: 36px;
@@ -21,9 +24,10 @@
       transition: color 0.2s;
     }
 }
-.nav {
-  height: 100%;
+.header__nav {
   width: 70%;
+}
+.nav {
   display: flex;
   justify-content: center;
 }
@@ -43,28 +47,6 @@
       transition: color 0.2s;
     }
 }
-.social {
-  width: 15%;
-  display: flex;
-  justify-content: center;
-}
-.social__item {
-  margin-left: 40px;
-    &:first-child {
-      margin-left: 0;
-    }
-}
-.social__link {
-  display: flex;
-  align-items: center;
-}
-.social__svg {
-  width: 25px;
-  height: 25px;
-  fill: #fff;
-  transition: fill 0.2s;
-    &:hover {
-      fill: $orange;
-      transition: fill 0.2s;
-    }
+.nav__link {
+  text-decoration: inherit;
 }
