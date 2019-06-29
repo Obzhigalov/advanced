@@ -14,7 +14,7 @@
 }
 .slider-list {
   position: absolute;
-  right: -50px;
+  right: 0;
   bottom: 60px;
   display: flex;
 }
@@ -31,6 +31,11 @@
 .slider-list__item--active {
   border: 2px solid $orange;
 }
+.slider__switch-wrap {
+  position: absolute;
+  right: -50px;
+  bottom: 60px;
+}
 .slider__switch {
   position: relative;
   display: flex;
@@ -41,27 +46,15 @@
   height: 50px;
   background-color: $dark-blue;
 }
-.slider__arrow-next {
-  top: 50%;
-  left:50%;
+.slider__arrow-svg {
   width: 10px;
-  height: 10px;
-  border-right: 2px solid white;
-  border-bottom: 2px solid white;
-  transform: translateX(-50%) rotate(-45deg);
+  fill: #fff;
 }
-.slider__arrow-prev {
-  top: 50%;
-  left:50%;
-  width: 10px;
-  height: 10px;
-  border-right: 2px solid white;
-  border-bottom: 2px solid white;
-  transform: rotate(135deg);
+.slider__arrow-svg-prev {
+  transform: rotate(180deg)
 }
-.slider__arrow-prev--denied {
-    border-right: 2px solid $grey;
-  border-bottom: 2px solid $grey;
+.slider__arrow-svg--denied {
+  fill: $grey;
 }
 @each $item in 1,2,3,4 {  
   li[data-slide='#{$item}'] {

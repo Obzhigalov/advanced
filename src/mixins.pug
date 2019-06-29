@@ -6,3 +6,5 @@ mixin icon(name, className)
 mixin image(path, className)
   img(src=require(`images/${path}`) class=className)
 
+mixin sectionTitle(text)
+  h4.section-title= `${text}`
