@@ -53,10 +53,15 @@
   position: absolute;
   bottom: -70px;
   width: 100%;
-    @include bigMonit {
+    /* @include bigMonit {
+      bottom: -273px;
+    } */
+}
+@media screen and (aspect-ratio: 21/9) {
+    .main__train-img {
       bottom: -273px;
     }
-}
+  }
 .scrolldown {
   color: #fff;
   position: absolute;
