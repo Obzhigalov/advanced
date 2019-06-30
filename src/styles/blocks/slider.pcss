@@ -45,18 +45,32 @@
   width: 50px;
   height: 50px;
   background-color: $dark-blue;
+  transition: background-color 0.2s;
+    &:hover {
+      background-color: #253141;
+      transition: background-color 0.2s;
+    }
+}
+.slider__switch:hover .slider__arrow-svg {
+  fill: $orange;
+  transition: fill 0.2s;
+}
+.slider__switch:hover .slider__arrow-svg--denied {
+  fill: $grey;
 }
 .slider__arrow-svg {
   width: 10px;
   fill: #fff;
+  transition: fill 0.2s;
 }
 .slider__arrow-svg-prev {
   transform: rotate(180deg)
 }
 .slider__arrow-svg--denied {
   fill: $grey;
+  transition: fill 0.2s;
 }
-@each $item in 1,2,3,4 {  
+@each $item in $slide {  
   li[data-slide='#{$item}'] {
   background-image: url(‘~images/content/portfolio/project-#{$item}.png);
   background-repeat: no-repeat;
@@ -115,6 +129,12 @@
   padding-left: 35px;
   position: relative;
   color: #4b6fd7;
+    &:hover {
+      color: $dark-blue;
+    }
+}
+.description-link:hover .description-link__svg {
+  fill: $dark-blue;
 }
 .description-link__svg {
   position: absolute;

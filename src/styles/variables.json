@@ -1,6 +1,7 @@
 {
   "text-color": "#414c63",
   "links-color": "#4b6fd7",
+  "big-desktop": "2000px",
   "bp-desktop-hd": "1800px",
   "bp-desktop": "1200px",
   "bp-tablets": "768px",
@@ -8,5 +9,6 @@
   "orange": "#ef8900",
   "dark-grey": "#3d4143",
   "grey": "#75787a",
-  "dark-blue": "#2b3948"
+  "dark-blue": "#2b3948",
+  "slide": [1, 2, 3, 4]
 }

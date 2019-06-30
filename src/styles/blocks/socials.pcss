@@ -37,7 +37,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: border 0.2s;
+    &:hover {
+      border: 1px solid $orange;
+      transition: border 0.2s;
+    }
+    &:hover .social__svg {
+      fill: $orange;
+      transition: fill 0.2s;
+    }
 }
 .social--footer .social__svg {
   fill: $grey;
+
 }
