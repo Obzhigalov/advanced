@@ -73,10 +73,16 @@
   color: $grey;
   font-style: italic;
   line-height: 30px;
-}
-.about-content__star {
-  position: absolute;
-  top: 10%;
-  transform: translateX(-150%);
-  opacity: 0.3;
+  &::before {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    top: 10%;
+    transform: translateX(-150%);
+    opacity: 0.3;
+    background-image: url(‘~images/content/about/star.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }

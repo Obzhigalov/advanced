@@ -2,15 +2,17 @@
   margin-top: 90px;
   width: 100%;
   display: flex;
+  position: relative;
 }
 .slider {
   z-index: 5;
   position: relative;
   width: 66%;
   height: 550px;
-  background-image: url(‘~images/content/portfolio/project-1.png);
-  background-repeat: no-repeat;
-  background-size: cover;
+}
+.slider__preview {
+  object-fit: cover;
+  height: 100%;
 }
 .slider-list {
   position: absolute;
@@ -27,6 +29,10 @@
       filter: saturate(300%);
       transition: filter 0.3s;
     }
+}
+.slider-list__item-pic {
+  width: 100%;
+  object-fit: cover;
 }
 .slider-list__item--active {
   border: 2px solid $orange;
@@ -70,17 +76,32 @@
   fill: $grey;
   transition: fill 0.2s;
 }
-@each $item in $slide {  
+/* @each $item in $slide {  
   li[data-slide='#{$item}'] {
   background-image: url(‘~images/content/portfolio/project-#{$item}.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
-}
+} */
 
 .decription-wrap {
+  position: relative;
   width: 34%;
   display: flex;
+  &::before {
+      content: '1';
+      position: absolute;
+      top: 0;
+      left: -55px;
+      z-index: 0;
+      color: #f0f0f0;
+      font-size: 400px;
+      font-weight: 800;
+      line-height: 473px;
+    }
+}
+.description {
+  margin-left: 185px;
 }
 .slide-num {
   z-index: 0;

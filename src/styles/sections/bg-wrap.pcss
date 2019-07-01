@@ -3,8 +3,19 @@
   background-image: url(‘~images/content/bg-wrap/autumn-bg.png);
   background-repeat: no-repeat;
   background-size: cover;
+    &::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: -150px;
+      width: 797px;
+      height: 1404px;
+      background-image: url(‘~images/content/bg-wrap/leafs.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
 }
-.sections-bg-wrap__leafs {
+/* .sections-bg-wrap__leafs {
   position: absolute;
   right: 0;
   top: -150px;
@@ -13,7 +24,7 @@
   background-image: url(‘~images/content/bg-wrap/leafs.png);
   background-repeat: no-repeat;
   background-size: cover;
-}
+} */
 .sections-bg-wrap__gradient {
   z-index: 0;
   position: absolute;

@@ -3,8 +3,8 @@ mixin icon(name, className)
   svg(class=className viewBox=icon.viewBox preserveAspectRatio="none")
     use(xlink:href=icon.url)
 
-mixin image(path, className)
-  img(src=require(`images/${path}`) class=className)
+mixin image(path, className, role, alt)
+  img(src=require(`images/${path}`) class=className role=role alt=alt)
 
 mixin sectionTitle(text)
   h4.section-title= `${text}`
