@@ -8,23 +8,21 @@ section.feedback
       +icon('arrow-down', 'feedback-slider__switch-svg feedback-slider__switch-svg-next')
   ul.feedback-slider
     li.feedback-slider__item 
-      .feedback__quote
-        +icon('quote', 'feedback__quote-svg')
       .feedback-slider__item-content
         .feedback__text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-        .feedback__img-wrap
-          +image('content/feedback/dima.png', 'feedback__img', 'img', 'Feedback Avatar')
-        .feedback__titles
-          h5.feedback__title Ковальчук Дмитрий
-          h6.feedback__subtitle Основатель Loftschool
-    li.feedback-slider__item 
-      .feedback__quote
-        +icon('quote', 'feedback__quote-svg')
+        .feedback__content-wrap 
+          .feedback__img-wrap
+            +image('content/feedback/dima.png', 'feedback__img', 'img', 'Feedback Avatar')
+          .feedback__titles
+            h5.feedback__title Ковальчук Дмитрий
+            h6.feedback__subtitle Основатель Loftschool
+    li.feedback-slider__item
       .feedback-slider__item-content
         .feedback__text Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-        .feedback__img-wrap
-          +image('content/feedback/vova.png', 'feedback__img', 'img', 'Feedback Avatar')
-        .feedback__titles
-          h5.feedback__title Владимир Сабанцев
-          h6.feedback__subtitle Преподаватель
+        .feedback__content-wrap
+          .feedback__img-wrap
+            +image('content/feedback/vova.png', 'feedback__img', 'img', 'Feedback Avatar')
+          .feedback__titles
+            h5.feedback__title Владимир Сабанцев
+            h6.feedback__subtitle Преподаватель
 
