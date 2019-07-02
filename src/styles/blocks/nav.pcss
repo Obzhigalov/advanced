@@ -1,0 +1,26 @@
+.header__nav {
+  width: 70%;
+}
+.nav {
+  display: flex;
+  justify-content: center;
+}
+.nav__list {
+  display: flex;
+  height: 100%;
+}
+.nav__list-item {
+  margin-left: 55px;
+  height: 100%;
+  transition: color 0.3s;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:hover {
+      color: $orange;
+      transition: color 0.3s;
+    }
+}
+.nav__list-link {
+  text-decoration: inherit;
+}

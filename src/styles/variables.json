@@ -10,5 +10,11 @@
   "dark-grey": "#3d4143",
   "grey": "#75787a",
   "dark-blue": "#2b3948",
+  "white": "#fff",
+  "light-gray": "#ccc",
+  "lighter-gray": "#f0f0f0",
+  "blue": "#4b6fd7",
+  "lighter-blue": "#f2f5f9",
+  "darker-blue": "#253141",
   "slide": [1, 2, 3, 4]
 }

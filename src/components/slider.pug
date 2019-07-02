@@ -1,0 +1,27 @@
+mixin slider(slidesNum)
+  ul.slider__list
+    - for(var i = 0; i < slidesNum.length; i++)
+      li.slider__list-item(data-slide=`${slidesNum[i]}`)
+        +image(`content/portfolio/project-${slidesNum[i]}.png`, 'slider__list-item-pic', '', 'Проект Андрея Обжигалов из портфолио')
+
+.slider-wrap
+  .slider
+    +image('content/portfolio/project-preview-1.png', 'slider__preview', '', 'Превью проекта Андрея Обжигалова из портфолио')
+    +slider(['1','2','3','4'])
+    .slider__switch-wrap
+      button.slider__switch(class="slider__switch-next")
+        +icon('arrow-down', 'slider__arrow-svg slider__arrow-svg-next')
+      button.slider__switch(class="slider__switch-prev")
+        +icon('arrow-down', 'slider__arrow-svg slider__arrow-svg-prev slider__arrow-svg--denied')
+  .decription-wrap
+    .description
+      ul.description__tags-list
+        li.description__tags-list__item HTML
+        li.description__tags-list__item CSS
+        li.description__tags-list__item Javacript
+      .description__content
+        h4.description__title Сайт школы образования
+        .description__info
+          p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+        a.description__link(href="#") Посмотреть сайт
+          +icon('link', 'description__link-svg')

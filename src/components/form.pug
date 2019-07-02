@@ -1,6 +1,4 @@
-section.contact-me
-  +sectionTitle('Связаться со мной')
-  form.form(action="#")
+form.form(action="#")
     label.form__label.form__label--half
       .form__label-title Введите ваше имя
       input.form__input(type="text", name='name', placeholder='Дмитрий Ковальчук')
@@ -19,4 +17,4 @@ section.contact-me
       .form__svg-wrap.form__svg-wrap--textarea
         +icon('message', 'form__svg')
       .form__label-border
-    button.form__button Отправить
+    button.form__button(type="submit") Отправить

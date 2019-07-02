@@ -4,7 +4,10 @@ mixin icon(name, className)
     use(xlink:href=icon.url)
 
 mixin image(path, className, role, alt)
-  img(src=require(`images/${path}`) class=className role=role alt=alt)
+  if role
+    img(src=require(`images/${path}`) class=className role=role alt=alt)
+  else
+    img(src=require(`images/${path}`) class=className alt=alt)
 
 mixin sectionTitle(text)
   h4.section-title= `${text}`
