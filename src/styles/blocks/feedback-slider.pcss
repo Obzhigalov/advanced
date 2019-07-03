@@ -38,6 +38,9 @@
   margin-top: 90px;
   display: flex;
   width: 90%;
+    @include tablet {
+      width: 100%;
+    }
 }
 .feedback-slider__item {
   position: relative;
@@ -56,6 +59,14 @@
       background: svg-load('quote.svg', fill=#fff, width=100%, height=100%);
       background-repeat: no-repeat;
       opacity: 0.09;
+        @include tablet {
+          width: 30px;
+          height: 26px;
+          opacity: 0.3;
+        }
+    }
+    @include tablet {
+      margin-left: 20px;
     }
 }
 .feedback-slider__item-content {
@@ -63,6 +74,9 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+    @include tablet {
+      margin-left: 55px;
+    }
 }
 .feedback-slider__item-text {
   color: $white;

@@ -6,6 +6,15 @@
   transform: translateX(50%);
   font-size: 24px;
   font-weight: 700;
+    @include small-desktop {
+      width: 55%;
+      transform: translateX(40%);
+    }
+    @include tablet {
+      width: 95%;
+      transform: translateX(0%);
+      align-items: center;
+    }
 }
 .skills__wrap {
   width: 100%;
@@ -13,14 +22,21 @@
     &:first-child {
       margin-top: 0;
     }
+  @include tablet {
+    width: 100%;
+  }
 }
 .skills__subtitle {
   width: 100%;
+    @include tablet {
+      text-align: center;
+    }
 }
 .skills-list {
   margin-top: 40px;
   width: 100%;
   display: flex;
+  justify-content: center;
 }
 .skills-list__item {
   position: relative;
@@ -37,6 +53,9 @@
   text-align: center;
     &:first-child {
       margin-left: 0;
+    }
+    @include small-desktop {
+      margin-left: 15px;
     }
 }
 .percent {

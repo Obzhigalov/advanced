@@ -11,3 +11,37 @@
   justify-content: space-between;
   align-items: center;
 }
+.header__nav {
+  width: 70%;
+  @include tablet {
+    display: none;
+  }
+}
+.header__burger {
+  display: none;
+  position: relative;
+  width: 28px;
+  height: 4px;
+  background-color: $white;
+    &::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: 0;
+      width: 28px;
+      height: 4px;
+      background-color: $white;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 0;
+      width: 28px;
+      height: 4px;
+      background-color: $white;
+    }
+    @include tablet {
+      display: flex;
+    }
+}

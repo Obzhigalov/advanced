@@ -29,6 +29,12 @@
   height: 80%;
   width: 100%;
   background-image: linear-gradient(to top, #1b1f22 35%, rgba(27, 31, 34, 0.7) 80%, rgba(27, 31, 34, 0) 100%);
+    @include desktop {
+      background-image: linear-gradient(to top, #1b1f22 55%, rgba(27, 31, 34, 0.7) 80%, rgba(27, 31, 34, 0) 100%);
+    }
+    @include tablet {
+      background-image: linear-gradient(to top, #1b1f22 85%, rgba(27, 31, 34, 0.7) 90%, rgba(27, 31, 34, 0) 100%);
+    }
 }
 @media screen and (min-width: 2000px) {
       .about__bg-gradient {

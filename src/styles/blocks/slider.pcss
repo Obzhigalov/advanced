@@ -3,22 +3,53 @@
   width: 100%;
   display: flex;
   position: relative;
+    &::after {
+      content: '1';
+      z-index: 0;
+      position: absolute;
+      top: 0px;
+      right: 34%;
+      transform: translateX(77%);
+      color: $lighter-gray;
+      font-size: 400px;
+      font-weight: 800;
+      line-height: 473px;
+        @include small-desktop {
+          font-size: 336px;
+          top: 42px;
+          transform: translateX(70%);
+        }
+        @include tablet {
+          right: 7.5%;
+        }
+      }
+    @include tablet {
+        flex-wrap: wrap;
+    }
 }
 .slider {
   z-index: 5;
   position: relative;
   width: 66%;
   height: 550px;
+    @include tablet {
+      width: 92.5%;
+    }
 }
 .slider__preview {
   object-fit: cover;
   height: 100%;
+  z-index: 5;
 }
-.slider__list {
+.slider__list-wrap {
   position: absolute;
   right: 0;
   bottom: 60px;
+  overflow: hidden;
+}
+.slider__list {
   display: flex;
+  transform: translateX(144.6px);
 }
 .slider__list-item {
   cursor: pointer;
@@ -28,6 +59,10 @@
     &:hover {
       filter: saturate(300%);
       transition: filter 0.3s;
+    }
+    @include small-desktop {
+      width: 144.6px;
+      height: 81px;
     }
 }
 .slider__list-item-pic {
@@ -41,6 +76,9 @@
   position: absolute;
   right: -50px;
   bottom: 60px;
+      @include small-desktop {
+        right: -41px;
+      }
 }
 .slider__switch {
   position: relative;
@@ -56,6 +94,10 @@
       background-color: $darker-blue;
       transition: background-color 0.3s;
     }
+      @include small-desktop {
+        height: 41px;
+        width: 41px;
+      }
 }
 .slider__switch:hover .slider__arrow-svg {
   fill: $orange;
@@ -84,24 +126,29 @@
 }
 } */
 
-.decription-wrap {
+.description-wrap {
   position: relative;
   width: 34%;
   display: flex;
-  &::before {
-      content: '1';
-      position: absolute;
-      top: 0;
-      left: -55px;
-      z-index: 0;
-      color: $lighter-gray;
-      font-size: 400px;
-      font-weight: 800;
-      line-height: 473px;
+  padding-left: 132px;
+    @include small-desktop {
+      padding-left: 100px;
+    }
+    @include tablet {
+      width: 100%;
+      padding-top: 64px;
+      padding-left: 0;
+      justify-content: center;
     }
 }
 .description {
-  margin-left: 132px;
+    @include tablet {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
 }
 .description__tags-list {
   display: flex;
@@ -126,6 +173,15 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+    @include small-desktop {
+      height: 247px;
+      margin-top: 115px;
+    }
+    @include tablet {
+      margin-top: 20px;
+      justify-content: flex-start;
+      align-items: center;
+    }
 }
 .description__title {
   color: $dark-blue;
@@ -136,6 +192,9 @@
   color: $dark-blue;
   font-size: 16px;
   font-weight: 400;
+    @include tablet {
+      margin-top: 20px;
+    }
 }
 .description__link {
   text-decoration: none;
@@ -148,6 +207,11 @@
     &:hover {
       color: $dark-blue;
       transition: color 0.5s;
+    }
+    @include tablet {
+      width: 50%;
+      padding-left: 15px;
+      margin-top: 20px;
     }
 }
 .description__link:hover .description__link-svg {

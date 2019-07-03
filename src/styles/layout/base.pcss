@@ -5,8 +5,11 @@ html {
   @include desktop {
     font-size: 14px;
   }
-  @include tablets {
-    font-size: 14px;
+  @include small-desktop {
+    font-size: 12px;
+  }
+  @include tablet {
+    
   }
 }
 body,
@@ -42,7 +45,7 @@ button {
   height: 100%;
   /* width: 1490px; */
 
-  @include phones {
+  @include phone {
     width: 85%;
   }
 }
@@ -80,11 +83,6 @@ h6 {
 p {
   margin: 0;
   padding: 0;
-}
-
-button[type="button"] {
-  cursor: pointer;
-  background-color: transparent;
 }
 
 a {

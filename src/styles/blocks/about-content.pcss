@@ -14,9 +14,8 @@
   display: flex;
 }
 .about-content__img-wrap {
-  min-width: 200px;
-  min-height: 200px;
-  width: 100%;
+  width: 200px;
+  height: 200px;
   display: flex;
   justify-content: center;
 }
@@ -25,6 +24,10 @@
   height: 200px;
   object-fit: cover;
   border-radius: 50%;
+    @include tablet {
+      width: 150px;
+      height: 150px;
+    }
 }
 .about-content__general {
   display: flex;
