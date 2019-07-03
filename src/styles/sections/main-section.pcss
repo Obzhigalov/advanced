@@ -12,6 +12,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+    @include tablet {
+      z-index: 10;
+    }
 }
 .main__content {
   height: 100%;
@@ -43,6 +46,9 @@
       margin-right: 0;
       margin-top: 30px;
     }
+    @include phone {
+      font-size: 56px;
+    }
 }
 .main__subtitle {
   margin-top: 10px;
@@ -53,12 +59,19 @@
   font-weight: 700;
   line-height: 30px;
   max-width: 170px;
+    @include tablet {
+      margin: 0;
+      text-align: center;
+    }
 }
 .main__train-img {
   z-index: 10;
   position: absolute;
   bottom: -70px;
   width: 100%;
+    @include tablet {
+      bottom: 0px;
+    }
 }
 @media screen and (min-width: 2000px) {
     .main .container {

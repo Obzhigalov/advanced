@@ -5,6 +5,7 @@
   background-image: url(‘~images/content/skills/skills-bg.png);
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: hidden;
    &::before {
     content: '';
     position: absolute;
@@ -26,6 +27,9 @@
         left: 50%;
         transform: translateX(-50%) rotate(-90deg);
       }
+      @include phone {
+        bottom: -77px;
+      }
    }
 }
 .skills .container {
@@ -36,6 +40,9 @@
   align-items: center;
     @include tablet {
       padding-bottom: 340px;
+    }
+    @include phone {
+      width: 98%;
     }
 }
 .skills__title {

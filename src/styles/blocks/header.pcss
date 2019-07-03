@@ -26,11 +26,14 @@
     &::before {
       content: '';
       position: absolute;
-      top: -8px;
+      bottom: 8px;
       left: 0;
       width: 28px;
       height: 4px;
       background-color: $white;
+        @include phone {
+          bottom: 9px;
+        }
     }
     &::after {
       content: '';
@@ -40,6 +43,9 @@
       width: 28px;
       height: 4px;
       background-color: $white;
+        @include phone {
+          top: 9px;
+        }
     }
     @include tablet {
       display: flex;

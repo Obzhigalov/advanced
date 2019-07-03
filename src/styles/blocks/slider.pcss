@@ -22,6 +22,9 @@
         @include tablet {
           right: 7.5%;
         }
+        @include phone {
+          display: none;
+        }
       }
     @include tablet {
         flex-wrap: wrap;
@@ -35,6 +38,9 @@
     @include tablet {
       width: 92.5%;
     }
+    @include phone {
+      width: 100%;
+    }
 }
 .slider__preview {
   object-fit: cover;
@@ -46,6 +52,9 @@
   right: 0;
   bottom: 60px;
   overflow: hidden;
+    @include phone {
+      display: none;
+    }
 }
 .slider__list {
   display: flex;
@@ -79,6 +88,10 @@
       @include small-desktop {
         right: -41px;
       }
+      @include phone {
+        right: 0;
+        bottom: 0;
+      }
 }
 .slider__switch {
   position: relative;
@@ -97,6 +110,10 @@
       @include small-desktop {
         height: 41px;
         width: 41px;
+      }
+      @include phone {
+        height: 60px;
+        width: 60px;
       }
 }
 .slider__switch:hover .slider__arrow-svg {
@@ -140,6 +157,9 @@
       padding-left: 0;
       justify-content: center;
     }
+    @include phone {
+      justify-content: flex-start;
+    }
 }
 .description {
     @include tablet {
@@ -148,6 +168,12 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
+    }
+    @include phone {
+      width: 70%;
+      align-items: flex-start;
+      text-align: left;
+      margin-left: 5%;
     }
 }
 .description__tags-list {
@@ -182,6 +208,9 @@
       justify-content: flex-start;
       align-items: center;
     }
+    @include phone {
+      align-items: flex-start;
+    }
 }
 .description__title {
   color: $dark-blue;
@@ -212,6 +241,9 @@
       width: 50%;
       padding-left: 15px;
       margin-top: 20px;
+    }
+    @include phone {
+      padding-left: 20px;
     }
 }
 .description__link:hover .description__link-svg {

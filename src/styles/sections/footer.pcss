@@ -2,9 +2,9 @@
   padding: 70px 0;
   color: $white;
   background-color: #1b1f22;
-    /* @include desktop {
-      font-size: 13.5px;
-    } */
+    @include phone {
+      padding: 40px 0 ;
+    }
 }
 .footer__grid {
   display: grid;
@@ -15,6 +15,10 @@
       grid-template-columns: 1fr 3fr;
       grid-template-rows: 100px 1fr 1fr;
       grid-gap: 30px;
+    }
+    @include phone {
+      grid-template-columns: 1fr;
+      grid-template-rows: 50px 60px 50px 90px 1fr 1fr;
     }
 }
 .footer__year {
@@ -40,9 +44,26 @@
     @include tablet {
       grid-column: 2/2;
     }
+    @include phone {
+      grid-column: 1/1;
+      grid-row: 4/4;
+    }
 }
 .footer__nav .nav {
   justify-content: flex-start;
+    @include phone {
+      width: 50%;
+    }
+}
+.footer__nav .nav__list-item {
+  &:nth-child(2n+1) {
+    @include phone {
+      margin-left: 0;
+    }
+  }
+  @include phone {
+    width: calc(50%-35px);
+  }
 }
 .footer__subtitle {
   grid-column: 2/2;
@@ -66,6 +87,10 @@
       grid-column: 2/2;
       grid-row: 2/2;
     }
+    @include phone {
+      grid-column: 1/1;
+      grid-row: 5/5;
+    }
 }
 .footer__content {
   width: 100%;
@@ -81,6 +106,10 @@
       grid-column: 2/2;
       grid-row: 3/3;
       width: 75%;
+    }
+    @include phone {
+      grid-column: 1/1;
+      grid-row: 6/6;
     }
 }
 .footer__qoute-content {
