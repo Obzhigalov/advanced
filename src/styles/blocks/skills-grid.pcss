@@ -1,14 +1,13 @@
 .skills__grid {
   margin-top: 80px;
-  width: 42%;
+  width: 60%;
   display: flex;
   flex-direction: column;
-  transform: translateX(50%);
+  transform: translateX(40%);
   font-size: 24px;
   font-weight: 700;
-    @include small-desktop {
-      width: 55%;
-      transform: translateX(40%);
+    @include desktop {
+      transform: translateX(30%);
     }
     @include tablet {
       width: 95%;
@@ -41,7 +40,10 @@
   margin-top: 40px;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+    @include tablet {
+      justify-content: center;
+    }
     @include phone {
       width: 60%;
       flex-wrap: wrap;
@@ -53,9 +55,9 @@
   font-size: 18px;
   font-weight: 700;
   border-radius: 50%;
-  width: 134px;
-  height: 134px;
-  margin-left: 60px;
+  width: 136px;
+  height: 136px;
+  margin-left: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,18 +70,28 @@
         margin-left: 0;
       }
     }
+    @include desktop {
+      margin-left: 35px;
+    }
     @include small-desktop {
       margin-left: 15px;
     }
     @include phone {
-      width: calc(50%-15px);
+      width: 130px;
+      height: 130px;
     }
 }
 .percent {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 136px;
   height: 136px;
-  transform: rotate(180deg)
+  transform: rotate(180deg);
+    @include phone {
+      width: 130px;
+      height: 130px;
+    }
 }
 .skills-list__circle-under {
   fill: transparent;
