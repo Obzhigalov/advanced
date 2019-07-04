@@ -21,6 +21,7 @@ const main = document.querySelector('.main');
 const maxMove = main.offsetWidth / 30;
 const titleCenterX = title.offsetLeft + (title.offsetWidth / 2);
 const titleCenterY = title.offsetTop + (title.offsetHeight / 2);
+const mediaQuery = window.matchMedia("(min-width: 1200px)");
 
 function getMousePos(xRef, yRef) {
   let blockRect = main.getBoundingClientRect();
@@ -36,7 +37,7 @@ main.addEventListener("mousemove", function(e) {
     let mousePos = getMousePos(e.clientX, e.clientY),
     distX = mousePos.x - titleCenterX,
     distY = mousePos.y - titleCenterY;
-    if (Math.abs(distX) < main.offsetWidth && distY < main.offsetHeight) {
+    if (Math.abs(distX) < main.offsetWidth && distY < main.offsetHeight && mediaQuery.matches) {
     title.style.transform = "translate3d("+(-1 * distX) / 100 + "px," + (-1 * distY) / 100 + "px, 0)";
     }
   })

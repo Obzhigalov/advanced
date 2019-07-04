@@ -11,6 +11,7 @@
   will-change: transform;
 }
 div[data-layer-number='1'] {
+  top: -30%;
   height: 100%;
 }
 div[data-layer-number='2'] {
@@ -26,20 +27,30 @@ div[data-layer-number='3'] {
       top: 52%;
     }
     @include tablet {
-      top: 62%;
+      height: 650px;
+      top: 45%;
     }
     @include phone {
-      top: 65%
+      top: 50%;
+      height: 600px;
     }
     @include small-phone {
-      top: 68.5%
+      height: 500px;
     }
 }
+@media screen and (min-width: 2000px) {
+    div[data-layer-number='3'] {
+      top: 55%;
+    }
+  }
 div[data-layer-number='4'] {
   top: 80%;
   height: 100%;
     @include desktop {
       top: 75%;
+    }
+    @include tablet {
+      top: 80%;
     }
 }
 @media screen and (min-width: 2000px) {
