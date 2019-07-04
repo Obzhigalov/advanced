@@ -16,6 +16,12 @@
   }
 }
 
+@mixin med-desktop() {
+  @media screen and (max-width: 1400px) {
+    @content
+  }
+}
+
 @mixin small-desktop() {
     @media screen and (max-width: $small-desktop) {
     @content;
@@ -30,6 +36,13 @@
 
 @mixin phone() {
   @media screen and (max-width: $bp-phones) {
+    @content;
+  }
+}
+
+
+@mixin small-phone() {
+  @media screen and (max-width: 400px) {
     @content;
   }
 }

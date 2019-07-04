@@ -17,5 +17,6 @@
   "blue": "#4b6fd7",
   "lighter-blue": "#f2f5f9",
   "darker-blue": "#253141",
+  "black": "#000",
   "slide": [1, 2, 3, 4]
 }
