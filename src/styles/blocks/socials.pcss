@@ -35,7 +35,6 @@
 .social--footer {
   margin-top: 30px;
 }
-
 .social--footer .social__item {
   width: 50px;
   height: 50px;
@@ -63,5 +62,23 @@
 }
 .social--footer .social__svg {
   fill: $grey;
-
+}
+.social--fs-menu {
+  margin-top: 50px;
+  justify-content: flex-start;
+}
+.social--fs-menu .social__item {
+  margin-left: 35px;
+    &:first-child {
+      margin-left: 0;
+    }
+}
+.social--fs-menu .social__svg {
+  fill: $black;
+  width: 35px;
+  height: 35px;
+    &:hover {
+      fill: $orange;
+      transition: fill 0.2s;
+    }
 }

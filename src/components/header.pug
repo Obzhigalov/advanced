@@ -1,7 +1,8 @@
 header.header
   include logo.pug
+  +logo('header')
   .header__nav
     include nav.pug
   include socials.pug
   +socials("header")
-  button.header__burger(type='button')
+  include burger.pug

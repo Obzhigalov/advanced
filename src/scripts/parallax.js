@@ -1,20 +1,21 @@
 const parallaxLayers = document.querySelectorAll('.parallax__layer');
 
+window.addEventListener('scroll', function() {
+  const wScroll = window.pageYOffset;
+  moveLayers(wScroll);
+});
+
 function moveLayers(wScroll) {
   Array.from(parallaxLayers).forEach(layer => {
     
-    const divider = layer.dataset.speed;
-    const strafe = wScroll * divider;
+    const coef = layer.dataset.speed;
+    const strafe = wScroll * coef;
 
     layer.style.transform = `translateY(-${strafe}%)`;
   });
 
 };
 
-window.addEventListener('scroll', function() {
-  const wScroll = window.pageYOffset;
-  moveLayers(wScroll);
-});
 
 const title = document.querySelector('.main__title-wrap');
 const main = document.querySelector('.main');
