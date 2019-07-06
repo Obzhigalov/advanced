@@ -3,6 +3,13 @@
   width: 100%;
   height: 100%;
 }
+.parallax__wrap {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
 .parallax__layer {
   position: absolute;
   top: 0;
@@ -11,9 +18,17 @@
   will-change: transform;
 }
 div[data-layer-number='1'] {
+  position: relative;
   top: -30%;
+  left: -5%;
   height: 100%;
+  width: 110%;
 }
+@media screen and (min-width: 2000px) {
+    div[data-layer-number='1'] {
+      top: -20%;
+    }
+  }
 div[data-layer-number='2'] {
   top: 40%;
   height: 100%;
@@ -66,6 +81,7 @@ div[data-layer-number='4'] {
 }
 div[data-layer-number='1'] .parallax__image {
   z-index: 1;
+
 }
 div[data-layer-number='2'] .parallax__image {
   z-index: 1;

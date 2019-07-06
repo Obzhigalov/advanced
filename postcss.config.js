@@ -8,7 +8,7 @@ module.exports = {
       extensions: ".pcss"
     }),
     require("autoprefixer")({
-      browsers: ["last 3 iOS versions"],
+      browsers: ["last 2 versions"],
       cascade: false
     }),
     require("postcss-advanced-variables")({

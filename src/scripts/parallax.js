@@ -17,11 +17,11 @@ function moveLayers(wScroll) {
 };
 
 
-const title = document.querySelector('.main__title-wrap');
+const sky = document.querySelector('.parallax__sky');
 const main = document.querySelector('.main');
 const maxMove = main.offsetWidth / 30;
-const titleCenterX = title.offsetLeft + (title.offsetWidth / 2);
-const titleCenterY = title.offsetTop + (title.offsetHeight / 2);
+const titleCenterX = sky.offsetLeft + (sky.offsetWidth / 2);
+const titleCenterY = sky.offsetTop + (sky.offsetHeight / 2);
 const mediaQuery = window.matchMedia("(min-width: 1200px)");
 
 function getMousePos(xRef, yRef) {
@@ -39,6 +39,6 @@ main.addEventListener("mousemove", function(e) {
     distX = mousePos.x - titleCenterX,
     distY = mousePos.y - titleCenterY;
     if (Math.abs(distX) < main.offsetWidth && distY < main.offsetHeight && mediaQuery.matches) {
-    title.style.transform = "translate3d("+(-1 * distX) / 100 + "px," + (-1 * distY) / 100 + "px, 0)";
+    sky.style.transform = "translate3d("+(-1 * distX) / 100 + "px," + (-1 * distY) / 100 + "px, 0)";
     }
   })
