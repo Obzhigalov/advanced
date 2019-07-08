@@ -6,7 +6,6 @@
   background-image: url(‘~images/content/skills/skills-bg.png);
   background-repeat: no-repeat;
   background-size: cover;
-  overflow: hidden;
    &::before {
     content: '';
     position: absolute;
@@ -31,6 +30,9 @@
       @include phone {
         bottom: -77px;
       }
+   }
+   @include tablet {
+      overflow: hidden;
    }
 }
 .skills .container {
