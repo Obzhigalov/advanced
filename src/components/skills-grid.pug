@@ -1,5 +1,5 @@
 script(type='text-x/template')#skills-grid
-  .skills__grid
+  .skills__grid(ref="skills-grid")
     .skills__wrap(v-for="skill in skills")
       h4.skills__subtitle {{skill.skillsGroup}}
       skillsWrap(
