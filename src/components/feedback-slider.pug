@@ -1,10 +1,18 @@
 script(type="text/x-template")#feedbackSlider-template
-  .feedback-slider
-    flickity(ref="flickity" :options="flickityOptions")
-      li(v-for= 'feedback in feedbackData' :key="feedback.id").feedback-slider__item
-        feedbackSliderItem(
-          :feedback= "feedback"
-        )
+  .feedback__slider-wrap
+    .feedback__row
+      +sectionTitle('Что обо мне говорят')
+      .feedback-slider__switch-list
+        button(@click="previous()").feedback-slider__switch-item
+          +icon('arrow-down', 'feedback-slider__switch-svg feedback-slider__switch-svg-prev')
+        button(@click="next()").feedback-slider__switch-item
+          +icon('arrow-down', 'feedback-slider__switch-svg feedback-slider__switch-svg-next')
+    .feedback-slider
+      flickity(ref="flickity" :options="flickityOptions")
+        li(v-for= 'feedback in feedbackData' :key="feedback.id").feedback-slider__item
+          feedbackSliderItem(
+            :feedback= "feedback"
+          )
 
 
 script(type="text/x-template")#feedbackSliderItem-template
