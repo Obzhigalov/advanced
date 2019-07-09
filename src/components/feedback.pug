@@ -2,9 +2,9 @@ section.feedback
   .feedback__row
     +sectionTitle('Что обо мне говорят')
     .feedback-slider__switch-list
-      button.feedback-slider__switch-item
+      button(@click="previous()").feedback-slider__switch-item
         +icon('arrow-down', 'feedback-slider__switch-svg feedback-slider__switch-svg-prev')
-      button.feedback-slider__switch-item
+      button(@click="next()").feedback-slider__switch-item
         +icon('arrow-down', 'feedback-slider__switch-svg feedback-slider__switch-svg-next')
   .feedback__slider-wrap
-    include feedback-slider.pug
+    #feedback-slider

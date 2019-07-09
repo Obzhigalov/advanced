@@ -39,7 +39,7 @@
   transform: rotate(180deg);
 }
 .feedback-slider {
-  display: flex;
+  /* display: flex; */
   /* width: 90%; */
     @include tablet {
       width: 100%;
@@ -47,7 +47,7 @@
 }
 .feedback-slider__item {
   position: relative;
-  margin-left: 75px;
+  padding-left: 75px;
   width: 50%;
   display: flex;
   flex-shrink: 0;
@@ -57,7 +57,7 @@
     &::before {
       content: '';
       position: absolute;
-      left: 16px;
+      left: 32px;
       width: 75px;
       height: 63px;
       background: svg-load('quote.svg', fill=#fff, width=100%, height=100%);
@@ -69,20 +69,17 @@
           opacity: 0.3;
         }
     }
-    @include tablet {
-      margin-left: 20px;
-    }
     @include phone {
       width: 100%;
     }
 }
 .feedback-slider__item-content {
-  margin-left: 100px;
+  margin-left: 30px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
     @include tablet {
-      margin-left: 55px;
+      margin-left: 20px;
     }
     @include phone {
       justify-content: center;
@@ -95,6 +92,7 @@
   opacity: 0.65;
 }
 .feedback-slider__item-content-wrap {
+  margin-top: 20px;
   display: flex;
     @include phone {
       margin-left: -55px;
