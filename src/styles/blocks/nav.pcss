@@ -5,24 +5,26 @@
 .nav__list {
   display: flex;
   height: 100%;
-    @include tablet {
-      flex-wrap: wrap;
-    };
+  
+  @include tablet {
+    flex-wrap: wrap;
+  }
 }
 .nav__list-item {
   margin-left: 55px;
   height: 100%;
   transition: color 0.3s;
-    &:first-child {
-      margin-left: 0;
-    }
-    &:hover {
-      color: $orange;
-      transition: color 0.3s;
-    }
-    @include small-desktop {
-      margin-left: 35px;
-    }
+  &:first-child {
+    margin-left: 0;
+  }
+  &:hover {
+    color: $orange;
+    transition: color 0.3s;
+  }
+  
+  @include small-desktop {
+    margin-left: 35px;
+  }
 }
 .nav__list-link {
   text-decoration: inherit;

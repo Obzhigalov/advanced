@@ -3,13 +3,15 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-    @include tablet {
-      margin-top: 60px;
-      justify-content: center;
-    }
-    @include phone {
-      margin-top: 30px;
-    }
+    
+  @include tablet {
+    margin-top: 60px;
+    justify-content: center;
+  }
+    
+  @include phone {
+    margin-top: 30px;
+  }
 }
 .form__label {
   display: flex;
@@ -33,14 +35,15 @@
 .form__label--half {
   width: calc(50%-25px);
   margin-left: 50px;
-    &:first-child {
-      margin-left: 0;
-    }
-    @include phone {
-      width: 100%;
-      margin-left: 0;
-      margin-top: 40px;
-    }
+  &:first-child {
+    margin-left: 0;
+  }
+  
+  @include phone {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 40px;
+  }
 }
 .form__label--full {
   margin-top: 40px;
@@ -78,16 +81,15 @@
   background: transparent;
   border: none;
   outline: none;
-    &::-webkit-input-placeholder { 
-      color: $white; 
-    }
-    &:focus::-webkit-input-placeholder {
-      color: transparent
-    }
- 
-    &:focus {
-      color: $orange;
-    }
+  &::-webkit-input-placeholder {
+    color: $white;
+  }
+  &:focus::-webkit-input-placeholder {
+    color: transparent;
+  }
+  &:focus {
+    color: $orange;
+  }
 }
 .form__input--textarea {
   resize: none;
@@ -101,7 +103,7 @@
   font-size: 18px;
   font-weight: 700;
   background-color: $orange;
-    &:hover {
-      background-image: linear-gradient(to right, #ea7400 0%, $orange 100%);
-    }
+  &:hover {
+    background-image: linear-gradient(to right, #ea7400 0%, $orange 100%);
+  }
 }

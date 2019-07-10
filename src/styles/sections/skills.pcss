@@ -6,7 +6,7 @@
   background-image: url(‘~images/content/skills/skills-bg.png);
   background-repeat: no-repeat;
   background-size: cover;
-   &::before {
+  &::before {
     content: '';
     position: absolute;
     z-index: 0;
@@ -16,24 +16,28 @@
     background-image: url(‘~images/content/skills/clipboard.png);
     background-repeat: no-repeat;
     background-size: cover;
-      @include desktop {
-        width: 477px;
-        height: 688px;
-      }
-      @include tablet {
-        width: 333px;
-        height: 481px;
-        bottom: -75px;
-        left: 50%;
-        transform: translateX(-50%) rotate(-90deg);
-      }
-      @include phone {
-        bottom: -77px;
-      }
+    
+    @include desktop {
+      width: 477px;
+      height: 688px;
+    }
+    
+    @include tablet {
+      width: 333px;
+      height: 481px;
+      bottom: -75px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-90deg);
+    }
+    
+    @include phone {
+      bottom: -77px;
+    }
    }
-   @include tablet {
-      overflow: hidden;
-   }
+  
+  @include tablet {
+    overflow: hidden;
+  }
 }
 .skills .container {
   position: relative;
@@ -41,9 +45,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-    @include tablet {
-      padding-bottom: 340px;
-    }
+  
+  @include tablet {
+    padding-bottom: 340px;
+  }
 }
 .skills__title {
   margin-top: 120px;

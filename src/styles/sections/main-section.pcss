@@ -11,9 +11,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-    @include tablet {
-      z-index: 10;
-    }
+  
+  @include tablet {
+    z-index: 10;
+  }
 }
 .main__content {
   height: 100%;
@@ -28,10 +29,11 @@
   align-items: flex-start;
   margin-bottom: 50px;
   will-change: transform;
-    @include tablet {
-      flex-direction: column;
-      align-items: center;
-    }
+  
+  @include tablet {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 .main__title {
   font-size: 72px;
@@ -42,13 +44,15 @@
   text-align: center;
   max-width: 500px;
   margin-right: 100px;
-    @include tablet {
-      margin-right: 0;
-      margin-top: 30px;
-    }
-    @include phone {
-      font-size: 56px;
-    }
+  
+  @include tablet {
+    margin-right: 0;
+    margin-top: 30px;
+  }
+  
+  @include phone {
+    font-size: 56px;
+  }
 }
 .main__subtitle {
   margin-top: 10px;
@@ -59,25 +63,27 @@
   font-weight: 700;
   line-height: 30px;
   max-width: 170px;
-    @include tablet {
-      margin: 0;
-      text-align: center;
-    }
+  
+  @include tablet {
+    margin: 0;
+    text-align: center;
+  }
 }
 .main__train-img {
   z-index: 10;
   position: absolute;
   bottom: -70px;
   width: 100%;
-    @include tablet {
-      bottom: 0px;
-    }
+  
+  @include tablet {
+    bottom: 0px;
+  }
 }
 @media screen and (min-width: 2000px) {
-    .main .container {
-      z-index: 15;
-    }
+  .main .container {
+    z-index: 15;
   }
+}
 .scrolldown {
   z-index: 25;
   color: $white;
@@ -88,12 +94,13 @@
   align-items: center;
   bottom: 3%;
   text-decoration: inherit;
-    &:hover .scrolldown__svg {
-      transform: scale(1.2)
-    }
-    @include tablet {
-      display: none;
-    }
+  &:hover .scrolldown__svg {
+    transform: scale(1.2)
+  }
+  
+  @include tablet {
+    display: none;
+  }
 }
 .scrolldown__svg {
   width: 40px;

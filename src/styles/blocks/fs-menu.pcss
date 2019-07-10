@@ -1,6 +1,6 @@
 .fs-menu {
   z-index: 30;
-  display: flex;
+  display: none;
   position: fixed;
   top: 0;
   right: 0;
@@ -15,23 +15,27 @@
   background-color: $white;
   transform: translateX(100%);
   transition: all 0.4s;
-    @include phone {
-      width: 45%;
-    }
-    @include small-phone {
-      width: 100%;
-      font-size: 28px;
-    }
+  
+  @include tablet {
+    display: flex;
+  }
+  
+  @include phone {
+    width: 45%;
+  }
+  
+  @include small-phone {
+    width: 100%;
+    font-size: 28px;
+  }
 }
 .fs-menu--active {
+  
   @include tablet {
     display: flex;
     transform: translateX(0);
     transition: transform 0.4s;
   }
-}
-.fs-menu__nav {
-
 }
 .fs-menu__nav .nav__list {
   width: 100%;
@@ -41,7 +45,7 @@
 .fs-menu__nav .nav__list .nav__list-item {
   margin-left: 0;
   margin-top: 25px;
-    &:first-child {
-      margin-top: 0;
-    }
+  &:first-child {
+    margin-top: 0;
+  }
 }

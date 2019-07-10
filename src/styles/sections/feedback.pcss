@@ -7,26 +7,29 @@
   flex-wrap: wrap;
   color: $white;
   min-height: 600px;
-    @include tablet {
-      width: 100%;
-    }
-    @include phone {
-      width: 100%;
-    }
+  
+  @include tablet {
+    width: 100%;
+  }
+    
+  @include phone {
+    width: 100%;
+  }
 }
 .feedback__row {
   width: 100%;
   display: flex;
   align-items: center;
-    @include phone {
-      flex-direction: column;
-      justify-content: center;
-    }
+  @include phone {
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 .feedback__slider-wrap {
   width: 100%;
   overflow: hidden;
-    @include phone {
-      margin-top: 45px;
-    }
+  
+  @include phone {
+    margin-top: 45px;
+  }
 }
