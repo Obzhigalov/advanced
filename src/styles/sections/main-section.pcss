@@ -1,0 +1,79 @@
+.main {
+  height: 100%;
+  position: relative;
+  background-image: url(‘~images/content/main/mountains.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.main .container {
+  z-index: 5;
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main__content {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main__title-wrap {
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 50px;
+}
+.main__title {
+  font-size: 72px;
+  font-weight: 800;
+  line-height: 75px;
+  color: $white;
+  text-transform: uppercase;
+  text-align: center;
+  max-width: 500px;
+  margin-right: 100px;
+}
+.main__subtitle {
+  margin-top: 10px;
+  margin-right: 15px;
+  text-align: right;
+  color: $light-gray;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 30px;
+  max-width: 170px;
+}
+.main__train-img {
+  z-index: 10;
+  position: absolute;
+  bottom: -70px;
+  width: 100%;
+}
+@media screen and (min-width: 2000px) {
+    .main .container {
+      z-index: 15;
+    }
+  }
+.scrolldown {
+  z-index: 25;
+  color: $white;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  bottom: 5%;
+  text-decoration: inherit;
+    &:hover .scrolldown__svg {
+      transform: scale(1.2)
+    }
+}
+.scrolldown__svg {
+  width: 40px;
+  height: 40px;
+  fill: $white;
+  cursor: pointer;
+}

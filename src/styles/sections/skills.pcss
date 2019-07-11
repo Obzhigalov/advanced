@@ -1,0 +1,39 @@
+.skills {
+  min-height: 1020px;
+  position: relative;
+  color: $white;
+  background-image: url(‘~images/content/skills/skills-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+   &::before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    width: 682px;
+    height: 983px;
+    top: 120px;
+    background-image: url(‘~images/content/skills/clipboard.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+   }
+}
+.skills .container {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.skills__title {
+  margin-top: 120px;
+  font-size: 30px;
+  font-weight: 700;
+}
+.skills__descr {
+  margin-top: 40px;
+  max-width: 476px;
+  color: $grey;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 30px;
+}

@@ -1,0 +1,34 @@
+.sections-bg-wrap {
+  position: relative;
+  background-image: url(‘~images/content/bg-wrap/autumn-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+    &::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: -150px;
+      width: 797px;
+      height: 1404px;
+      background-image: url(‘~images/content/bg-wrap/leafs.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+}
+/* .sections-bg-wrap__leafs {
+  position: absolute;
+  right: 0;
+  top: -150px;
+  width: 797px;
+  height: 1404px;
+  background-image: url(‘~images/content/bg-wrap/leafs.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+.sections-bg-wrap__gradient {
+  z-index: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to right, rgba(28, 32, 36, 0.9) 0%, rgba(28, 32, 36, 0.7) 62%, rgba(27, 31, 34, 0) 100%);
+}
