@@ -4,11 +4,11 @@
   display: flex;
   position: relative;
   &::after {
-    content: '1';
+    content: attr(data-slide);
     z-index: 0;
     position: absolute;
     top: 0px;
-    right: 34%;
+    right: 37%;
     transform: translateX(77%);
     color: $lighter-gray;
     font-size: 400px;
@@ -18,6 +18,7 @@
     @include small-desktop {
       font-size: 336px;
       top: 42px;
+      right: 35%;
       transform: translateX(70%);
     }
     
@@ -53,6 +54,7 @@
 .slider__preview {
   object-fit: cover;
   height: 100%;
+  width: 100%;
   z-index: 5;
   
   @include phone {
@@ -88,6 +90,9 @@
     width: 144.6px;
     height: 81px;
   }
+}
+.sliderListItemActive {
+  filter: saturate(300%);
 }
 .slider__list-item-pic {
   width: 100%;

@@ -7,3 +7,4 @@ import "./scripts/parallax";
 import "./scripts/fs-menu";
 import "./scripts/skills";
 import "./scripts/feedback";
+import "./scripts/slider";

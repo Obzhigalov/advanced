@@ -8,11 +8,6 @@ const feedbackSliderItem = {
   }
 }
 
-const feedbackSliderSwitch = {
-  el: '#feedbackSliderSwitch',
-  template: '#feedbackSliderSwitch-template'
-}
-
 new Vue({
   el: "#feedback-slider",
   template: "#feedbackSlider-template",
@@ -55,8 +50,5 @@ new Vue({
     const data = require('../data/feedback.json');
     this.feedbackData = this.makeArrWithRequiredImages(data);
     
-  },
-  mounted() {
-    console.log(this.feedbackData)
   }
 })

@@ -12,7 +12,6 @@ function menu() {
   fsMenu.addEventListener('click', ()=> {
     const target = event.target;
 
-    console.log(target)
 
     if(target.classList.contains('nav__list-link')) {
       burger.classList.toggle('burger--active');
