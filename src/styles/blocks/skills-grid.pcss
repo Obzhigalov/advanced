@@ -1,26 +1,64 @@
 .skills__grid {
   margin-top: 80px;
-  width: 42%;
+  width: 60%;
   display: flex;
   flex-direction: column;
-  transform: translateX(50%);
+  transform: translateX(40%);
   font-size: 24px;
   font-weight: 700;
+  
+  @include desktop {
+    transform: translateX(30%);
+  }
+  
+  @include tablet {
+    width: 95%;
+    transform: translateX(0%);
+    align-items: center;
+  }
 }
 .skills__wrap {
   width: 100%;
   margin-top: 60px;
-    &:first-child {
-      margin-top: 0;
-    }
+  &:first-child {
+    margin-top: 0;
+  }
+  
+  @include tablet {
+    width: 100%;
+  }
+  
+  @include phone {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 .skills__subtitle {
   width: 100%;
+  
+  @include tablet {
+    text-align: center;
+  }
 }
 .skills-list {
   margin-top: 40px;
   width: 100%;
   display: flex;
+  justify-content: flex-start;
+  
+  @include tablet {
+    justify-content: center;
+  }
+  
+  @include phone {
+    width: 60%;
+    flex-wrap: wrap;
+  }
+  
+  @include small-phone {
+    width: 67%;
+  }
 }
 .skills-list__item {
   position: relative;
@@ -28,22 +66,48 @@
   font-size: 18px;
   font-weight: 700;
   border-radius: 50%;
-  width: 134px;
-  height: 134px;
-  margin-left: 60px;
+  width: 136px;
+  height: 136px;
+  margin-left: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-    &:first-child {
+  &:first-child {
+    margin-left: 0;
+  }
+  &:nth-child(3) {
+    
+    @include phone {
       margin-left: 0;
     }
+  }
+  
+  @include desktop {
+    margin-left: 35px;
+  }
+  
+  @include small-desktop {
+    margin-left: 15px;
+  }
+  
+  @include phone {
+    width: 130px;
+    height: 130px;
+  }
 }
-.percent {
+.skills-list__svg {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 136px;
   height: 136px;
-  transform: rotate(180deg)
+  transform: rotate(180deg);
+  
+  @include phone {
+    width: 130px;
+    height: 130px;
+  }
 }
 .skills-list__circle-under {
   fill: transparent;
@@ -55,16 +119,5 @@
   stroke-width: 6px;
   stroke-dasharray: 351;
   stroke-dashoffset: 351;
-  animation: fill 100s linear infinite;
-  animation-play-state: paused;
-}
-
-@keyframes fill {
-  from {
-    stroke-dashoffset: 351;
-  }
-
-  to {
-    stroke-dashoffset: 0;
-  }
+  transition: stroke-dashoffset 1s;
 }

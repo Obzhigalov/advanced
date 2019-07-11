@@ -1,0 +1,51 @@
+.fs-menu {
+  z-index: 30;
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  opacity: 1;
+  padding-left: 60px;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 22px;
+  color: $black;
+  background-color: $white;
+  transform: translateX(100%);
+  transition: all 0.4s;
+  
+  @include tablet {
+    display: flex;
+  }
+  
+  @include phone {
+    width: 45%;
+  }
+  
+  @include small-phone {
+    width: 100%;
+    font-size: 28px;
+  }
+}
+.fs-menu--active {
+  
+  @include tablet {
+    display: flex;
+    transform: translateX(0);
+    transition: transform 0.4s;
+  }
+}
+.fs-menu__nav .nav__list {
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.fs-menu__nav .nav__list .nav__list-item {
+  margin-left: 0;
+  margin-top: 25px;
+  &:first-child {
+    margin-top: 0;
+  }
+}

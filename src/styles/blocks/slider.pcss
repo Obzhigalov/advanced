@@ -3,21 +3,75 @@
   width: 100%;
   display: flex;
   position: relative;
+  &::after {
+    content: '1';
+    z-index: 0;
+    position: absolute;
+    top: 0px;
+    right: 34%;
+    transform: translateX(77%);
+    color: $lighter-gray;
+    font-size: 400px;
+    font-weight: 800;
+    line-height: 473px;
+      
+    @include small-desktop {
+      font-size: 336px;
+      top: 42px;
+      transform: translateX(70%);
+    }
+    
+    @include tablet {
+      right: 7.5%;
+    }
+    @include phone {
+      display: none;
+    }
+  }
+  
+  @include tablet {
+    flex-wrap: wrap;
+  }
 }
 .slider {
   z-index: 5;
   position: relative;
   width: 66%;
   height: 550px;
+  
+  @include tablet {
+    width: 92.5%;
+  }
+  
+  @include phone {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    height: auto;
+  }
 }
 .slider__preview {
   object-fit: cover;
   height: 100%;
+  z-index: 5;
+  
+  @include phone {
+    height: auto;
+    z-index: 0;
+    object-fit: fill;
+  }
 }
-.slider__list {
+.slider__list-wrap {
   position: absolute;
   right: 0;
   bottom: 60px;
+  overflow: hidden;
+  
+  @include phone {
+    display: none;
+  }
+}
+.slider__list {
   display: flex;
 }
 .slider__list-item {
@@ -25,10 +79,15 @@
   width: 178px;
   height: 100px;
   transition: filter 0.3s;
-    &:hover {
-      filter: saturate(300%);
-      transition: filter 0.3s;
-    }
+  &:hover {
+    filter: saturate(300%);
+    transition: filter 0.3s;
+  }
+  
+  @include small-desktop {
+    width: 144.6px;
+    height: 81px;
+  }
 }
 .slider__list-item-pic {
   width: 100%;
@@ -41,6 +100,15 @@
   position: absolute;
   right: -50px;
   bottom: 60px;
+  
+  @include small-desktop {
+    right: -41px;
+  }
+  
+  @include phone {
+    right: 0;
+    bottom: 0;
+  }
 }
 .slider__switch {
   position: relative;
@@ -52,10 +120,20 @@
   height: 50px;
   background-color: $dark-blue;
   transition: background-color 0.3s;
-    &:hover {
-      background-color: $darker-blue;
-      transition: background-color 0.3s;
-    }
+  &:hover {
+    background-color: $darker-blue;
+    transition: background-color 0.3s;
+  }
+  
+  @include small-desktop {
+    height: 41px;
+    width: 41px;
+  }
+      
+  @include phone {
+    height: 60px;
+    width: 60px;
+  }
 }
 .slider__switch:hover .slider__arrow-svg {
   fill: $orange;
@@ -84,24 +162,43 @@
 }
 } */
 
-.decription-wrap {
+.description-wrap {
   position: relative;
   width: 34%;
   display: flex;
-  &::before {
-      content: '1';
-      position: absolute;
-      top: 0;
-      left: -55px;
-      z-index: 0;
-      color: $lighter-gray;
-      font-size: 400px;
-      font-weight: 800;
-      line-height: 473px;
-    }
+  padding-left: 132px;
+  
+  @include small-desktop {
+    padding-left: 100px;
+  }
+  
+  @include tablet {
+    width: 100%;
+    padding-top: 64px;
+    padding-left: 0;
+    justify-content: center;
+  }
+  
+  @include phone {
+    justify-content: flex-start;
+  }
 }
 .description {
-  margin-left: 132px;
+  
+  @include tablet {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  @include phone {
+    width: 70%;
+    align-items: flex-start;
+    text-align: left;
+    margin-left: 5%;
+  }
 }
 .description__tags-list {
   display: flex;
@@ -116,9 +213,9 @@
   font-weight: 400;
   color: $dark-grey;
   border-radius: 25px;
-    &:first-child {
-      margin-left: 0;
-    }
+  &:first-child {
+    margin-left: 0;
+  }
 }
 .description__content {
   height: 295px;
@@ -126,6 +223,21 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  
+  @include small-desktop {
+    height: 247px;
+    margin-top: 115px;
+  }
+  
+  @include tablet {
+    margin-top: 20px;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  @include phone {
+    align-items: flex-start;
+  }
 }
 .description__title {
   color: $dark-blue;
@@ -136,6 +248,10 @@
   color: $dark-blue;
   font-size: 16px;
   font-weight: 400;
+  
+  @include tablet {
+    margin-top: 20px;
+  }
 }
 .description__link {
   text-decoration: none;
@@ -145,10 +261,20 @@
   position: relative;
   color: $blue;
   transition: color 0.5s;
-    &:hover {
-      color: $dark-blue;
-      transition: color 0.5s;
-    }
+  &:hover {
+    color: $dark-blue;
+    transition: color 0.5s;
+  }
+  
+  @include tablet {
+    width: 50%;
+    padding-left: 15px;
+    margin-top: 20px;
+  }
+  
+  @include phone {
+    padding-left: 20px;
+  }
 }
 .description__link:hover .description__link-svg {
   fill: $dark-blue;

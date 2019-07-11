@@ -1,0 +1,99 @@
+.parallax__wrap {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+.parallax__sky {
+  will-change: transform;
+}
+.parallax__layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  will-change: transform;
+}
+div[data-layer-number="1"] {
+  position: relative;
+  top: -30%;
+  left: -5%;
+  height: 100%;
+  width: 110%;
+}
+@media screen and (min-width: 2000px) {
+  div[data-layer-number="1"] {
+    top: -20%;
+  }
+}
+div[data-layer-number="2"] {
+  top: 40%;
+  height: 100%;
+}
+div[data-layer-number="3"] {
+  top: 45%;
+  
+  @include med-desktop {
+    top: 50%;
+  }
+  
+  @include small-desktop {
+    top: 52%;
+  }
+  
+  @include tablet {
+    height: 650px;
+    top: 45%;
+  }
+  
+  @include phone {
+    top: 50%;
+    height: 600px;
+  }
+    
+  @include small-phone {
+    height: 500px;
+  }
+}
+@media screen and (min-width: 2000px) {
+  div[data-layer-number="3"] {
+    top: 55%;
+  }
+}
+div[data-layer-number="4"] {
+  top: 80%;
+  height: 100%;
+  
+  @include desktop {
+    top: 75%;
+  }
+  
+  @include tablet {
+    top: 80%;
+  }
+}
+@media screen and (min-width: 2000px) {
+  div[data-layer-number="4"] {
+    top: 95%;
+  }
+}
+.parallax__image {
+  position: relative;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+div[data-layer-number="4"] .parallax__image {
+  z-index: 1;
+
+}
+div[data-layer-number="4"] .parallax__image {
+  z-index: 1;
+}
+div[data-layer-number="4"] .parallax__image {
+  z-index: 10;
+}
+div[data-layer-number="4"] .parallax__image {
+  z-index: 15;
+}

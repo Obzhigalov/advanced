@@ -1,13 +1,28 @@
-
-.logo {
+.logo--header {
   width: 15%;
+  
+  @include tablet {
+    width: 50%;
+  }
+}
+.logo--fs-menu {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  
+  @include small-phone {
+    display: none;
+  }
+}
+.logo {
+
 }
 .logo__link {
   font-size: 36px;
   font-weight: 800;
   transition: color 0.3s;
-    &:hover {
-      color: $orange;
-      transition: color 0.3s;
-    }
+  &:hover {
+    color: $orange;
+    transition: color 0.3s;
+  }
 }

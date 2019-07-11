@@ -1,15 +1,19 @@
 .about {
   color: #fff;
   position: relative;
-  background: url(‘~images/content/about/about-bg-matrix.png) left bottom no-repeat;
-  background-size: 100% 40%;
 }
 .about .container {
+  position: relative;
+  z-index: 9;
   height: 100%;
+  width: 100%;
+  max-width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 750px;
+  background: url(‘~images/content/about/about-bg-matrix.png) left bottom no-repeat transparent;
+  background-size: 100% 40%;
 }
 .about__bg-grass {
   z-index: 15;
@@ -18,21 +22,25 @@
   width: 100%;
 }
 @media screen and (min-width: 2000px) {
-    .about__bg-grass {
-      top: -17%;
-    }
+  .about__bg-grass {
+    top: -17%;
+  }
 }
 .about__bg-gradient {
-  z-index: 21;
+  z-index: 5;
   position: absolute;
   bottom: 30%;
-  height: 80%;
+  height: 100%;
   width: 100%;
   background-image: linear-gradient(to top, #1b1f22 35%, rgba(27, 31, 34, 0.7) 80%, rgba(27, 31, 34, 0) 100%);
+  
+  @include desktop {
+    background-image: linear-gradient(to top, #1b1f22 55%, rgba(27, 31, 34, 0.7) 80%, rgba(27, 31, 34, 0) 100%);
+  }
 }
 @media screen and (min-width: 2000px) {
-      .about__bg-gradient {
-        height: 100%;
-        bottom: 15%;
-      }
+  .about__bg-gradient {
+    height: 100%;
+    bottom: 15%;
+  }
 }

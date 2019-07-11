@@ -1,19 +1,27 @@
-ul.feedback-slider
-    li.feedback-slider__item 
-      .feedback-slider__item-content
-        .feedback-slider__item-text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-        .feedback-slider__item-content-wrap 
-          .feedback-slider__item-img-wrap
-            +image('content/feedback/dima.png', 'feedback-slider__item-img', '', 'Feedback Avatar')
-          .feedback-slider__item-titles
-            h5.feedback-slider__item-title Ковальчук Дмитрий
-            h6.feedback-slider__item-subtitle Основатель Loftschool
-    li.feedback-slider__item
-      .feedback-slider__item-content
-        .feedback-slider__item-text Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-        .feedback-slider__item-content-wrap
-          .feedback-slider__item-img-wrap
-            +image('content/feedback/vova.png', 'feedback-slider__item-img', '', 'Feedback Avatar')
-          .feedback-slider__item-titles
-            h5.feedback-slider__item-title Владимир Сабанцев
-            h6.feedback-slider__item-subtitle Преподаватель
+script(type="text/x-template")#feedbackSlider-template
+  .feedback__slider-wrap
+    .feedback__row
+      +sectionTitle('Что обо мне говорят')
+      .feedback-slider__switch-list
+        button(@click="previous()").feedback-slider__switch-item
+          +icon('arrow-down', 'feedback-slider__switch-svg feedback-slider__switch-svg-prev')
+        button(@click="next()").feedback-slider__switch-item
+          +icon('arrow-down', 'feedback-slider__switch-svg feedback-slider__switch-svg-next')
+    .feedback-slider
+      flickity(ref="flickity" :options="flickityOptions")
+        li(v-for= 'feedback in feedbackData' :key="feedback.id").feedback-slider__item
+          feedbackSliderItem(
+            :feedback= "feedback"
+          )
+
+
+script(type="text/x-template")#feedbackSliderItem-template
+  .feedback-slider__item-content
+    .feedback-slider__item-text {{feedback.text}}
+    .feedback-slider__item-content-wrap
+      .feedback-slider__item-img-wrap
+        img(:src="feedback.avatar").feedback-slider__item-img
+      .feedback-slider__item-titles
+        h5.feedback-slider__item-title {{feedback.title}}
+        h6.feedback-slider__item-subtitle {{feedback.subtitle}}
+        

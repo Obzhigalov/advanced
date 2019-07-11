@@ -4,6 +4,7 @@
   "big-desktop": "2000px",
   "bp-desktop-hd": "1800px",
   "bp-desktop": "1200px",
+  "small-desktop": "992px",
   "bp-tablets": "768px",
   "bp-phones": "480px",
   "orange": "#ef8900",
@@ -16,5 +17,6 @@
   "blue": "#4b6fd7",
   "lighter-blue": "#f2f5f9",
   "darker-blue": "#253141",
+  "black": "#000",
   "slide": [1, 2, 3, 4]
 }
