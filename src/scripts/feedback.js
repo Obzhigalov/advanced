@@ -23,7 +23,8 @@ new Vue({
         prevNextButtons: false,
         pageDots: false,
         wrapAround: false,
-        groupCells: true
+        groupCells: true,
+        draggable: false
           
           // any options from Flickity can be used
         }
@@ -49,6 +50,5 @@ new Vue({
   created() {
     const data = require('../data/feedback.json');
     this.feedbackData = this.makeArrWithRequiredImages(data);
-    
   }
 })

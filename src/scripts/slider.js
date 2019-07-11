@@ -95,7 +95,6 @@ new Vue ({
     },
     chooseSlide(index) {
       this.currentIndex = index
-      console.log(index)
     }
   },
   created() {
@@ -105,7 +104,5 @@ new Vue ({
     this.sliderData = this.makeArrWithRequiredImages(data);
 
     this.currentProject = this.sliderData[this.currentIndex];
-
-    console.log(this.currentProject)
   }
 })
