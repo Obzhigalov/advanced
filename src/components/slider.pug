@@ -25,8 +25,9 @@ script(type="text/x-template")#sliderDisplay-template
 
 script(type="text/x-template")#sliderList-template
   .slider__list-wrap 
-    ul.slider__list
-      li.slider__list-item(
+    .slider__list
+      button.slider__list-item(
+        type="button"
         v-for='item in sliderData'
         :class="{sliderListItemActive: item.id === currentProject.id}"
         @click="$emit('choose', item.id - 1)"
