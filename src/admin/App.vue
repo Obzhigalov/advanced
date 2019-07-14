@@ -114,7 +114,7 @@
             .pojects__item-photo
               .projects__item-photo-text Перетащите или загрузите для загрузки изображения
               button(type="button").pojects__item-photo-upload Загрузить
-            .projects__item-content
+            form.projects__item-content
               label.projects__item-content-label
                 .projects__item-content-label-title Название
                 input(type="text").projects__item-content-input
@@ -139,9 +139,9 @@
                 button(type="button").projects__item-content-btn-save Загрузить
         ul.projects__grid
           li.projects__grid-add
-            button(type="button").projects__grid-add-btn
-              .projects__grid-add-circle +
-              .projects__grid-add-title Добавить работу
+            button(type="button").add-btn
+              .add-circle +
+              .add-title Добавить работу
           li.projects__grid-item
             img(src="../images/content/portfolio/project-1.jpg").projects__grid-item-photo
             .projects__grid-item-content
@@ -149,12 +149,49 @@
               .projects__grid-item-descr Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
               a.projects__grid-item-link http://loftschool.ru
               .projects__grid-item-controls
+                .controls-wrap
+                  button(type="button").controls-edit Править
                 .projects__grid-item-controls-wrap
-                  .projects__grid-item-controls-content Править
-                  .projects__grid-item-controls-edit-svg
+                  button(type="button").controls-del Удалить
+    section.feedback
+      .container
+        .feedback__title Блок "Отзывы"
+        .feedback__item-edit
+          .feedback__item-edit-row Новый отзыв
+          form.feedback__item-edit-content
+            .feedback__item-edit-photo
+              .feedback__item-edit-avatar
+              button(type="button").feedback__item-edit-avatar-add Добавить фото
+            label.feedback__item-edit-label
+              .feedback__item-edit-label-title Имя автора
+              input(type="text").feedback__item-edit-input
+            label.feedback__item-edit-label
+              .feedback__item-edit-label-title Титул автора
+              input(type="text").feedback__item-edit-input
+            label.feedback__item-edit-descr
+              .feedback__item-edit-label-title Отзыв
+              textarea(name="feedback").feedback__item-edit-textarea
+          .feedback__item-edit-btn-wrap
+            button(type="button").feedback__item-edit-btn-cancel Отмена
+            button(type="button").feedback__item-edit-btn-save Загрузить
+        ul.feedback__grid
+          li.feedback__grid-add
+            button(type="button").add-btn
+              .add-circle +
+              .add-title Добавить работу
+          li.feedback__grid-item
+            .feedback__grid-item-row
+              .feedback__grid-item-avatar
+                img(src="../images/content/feedback/vova.png")
+              .feedback__grid-item-title-wrap
+                .feedback__grid-item-title Владимир Сабанцев
+                .feedback__grid-item-subtitle Преподаватель
+            .feedback__grid-item-descr Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
+            .feedback__grid-item-controls
+                .controls-wrap
+                  button(type="button").controls-edit Править
                 .projects__grid-item-controls-wrap
-                  .projects__grid-item-controls-content Удалить
-                  .projects__grid-item-controls-del-svg
+                  button(type="button").controls-del Удалить
 </template>
 
 <style lang="pcss">
@@ -294,6 +331,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
+
+  @include phone {
+    grid-template-columns: 1fr;
+  }
 }
 
 .about-grid__item {
@@ -302,7 +343,6 @@
   padding-left: 25px;
   padding-right: 25px;
   padding-bottom: 25px;
-  border-radius: 7px;
   box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
   background-color: #fff;
 }
@@ -361,6 +401,10 @@
 
 .about-grid__item-list-skill {
   width: 60%;
+  
+  @include tablet {
+    width: 50%;
+  }
 }
 
 .about-grid__item-list-value {
@@ -435,7 +479,6 @@
   margin-top: 60px;
   padding: 25px;
   background-color: #fff;
-  border-radius: 7px;
   box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
 }
 
@@ -451,6 +494,10 @@
   display: grid;
   grid-gap: 20px;
   grid-template-columns: 1fr 1fr;
+  
+  @include tablet {
+    grid-template-columns: 1fr;
+  }
 }
 
 .pojects__item-photo {
@@ -561,13 +608,26 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 20px;
+
+  @include tablet {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include phone {
+    grid-template-columns: 1fr;
+  }
 }
 
 .projects__grid-add {
   width: 100%;
+  min-height: 300px;
+
+  @include phone {
+    height: 100%;
+  }
 }
 
-.projects__grid-add-btn {
+.add-btn {
   height: 100%;
   width: 100%;
   background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
@@ -577,7 +637,7 @@
   justify-content: center;
 }
 
-.projects__grid-add-circle {
+.add-circle {
   width: 150px;
   height: 150px;
   color: #fff;
@@ -589,7 +649,7 @@
   align-items: center
 }
 
-.projects__grid-add-title {
+.add-title {
   margin-top: 20px;
   color: #fff;
 }
@@ -634,33 +694,249 @@
   justify-content: space-between;
 }
 
-.projects__grid-item-controls-wrap {
+.controls-wrap {
   display: flex;
   align-items: center;
 }
 
-.projects__grid-item-controls-edit-svg {
-  width: 17px;
-  height: 17px;
-  margin-left: 10px;
-  background: svg-load(
-          "pencil.svg",
-          fill=rgba(#383bcf, 1),
-          width=17px,
-          height=17px
-        ) center no-repeat;
+.controls-edit {
+  position: relative;
+  background-color: transparent;
+
+  &::after {
+    content: "";
+    position: absolute;
+    margin-left: 10px;
+    width: 18px;
+    height: 18px;
+    background: svg-load(
+            "pencil.svg",
+            fill=rgba(#383bcf, 1),
+            width=17px,
+            height=17px
+          ) center no-repeat;
+  }
 }
 
-.projects__grid-item-controls-del-svg {
-  width: 15px;
-  height: 15px;
-  margin-left: 10px;
+.controls-del {
+  position: relative;
+  background: transparent;
+  margin-right: 18px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    margin-left: 10px;
+    width: 18px;
+    height: 18px;
+    background: svg-load(
+            "remove.svg",
+            fill=rgba(#c92e2e, 1),
+            width=17px,
+            height=17px
+          ) center no-repeat;
+  }
+}
+
+.feedback {
+  padding-top: 60px;
+  padding-bottom: 30px;
+  background-color: #f8f9fe;
+}
+
+.feedback__title {
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.feedback__item-edit {
+  padding: 20px 20px 40px 20px;
+  margin-top: 60px;
+  box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
+  background-color: #ffffff;
+}
+
+.feedback__item-edit-row {
+  padding-bottom: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  border-bottom: 1px solid silver;
+}
+
+.feedback__item-edit-content {
+  margin-top: 45px;
+  margin-left: 15px;
+  width: 80%;
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-rows: 3fr 4fr;
+
+  @include tablet {
+    width: 90%;
+  }
+
+  @include phone {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+.feedback__item-edit-photo {
+  grid-row: 1/3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+    @include phone {
+      grid-row: intial;
+  }
+}
+
+.feedback__item-edit-avatar {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  background-color: #dee4ed;
   background: svg-load(
-          "remove.svg",
-          fill=rgba(#c92e2e, 1),
-          width=17px,
-          height=17px
-        ) center no-repeat;
+              "user.svg",
+              fill=rgba(#fff, 1),
+              width=85px,
+              height=113px
+            ) center no-repeat #dee4ed;
+}
+
+.feedback__item-edit-avatar-add {
+  margin-top: 30px;
+  color: #383bcf;
+  background-color: transparent;
+}
+
+.feedback__item-edit-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @include phone {
+    margin-top: 20px;
+  }
+}
+
+.feedback__item-edit-input {
+  height: 50px;
+  width: 100%;
+  margin-top: 10px;
+  border-bottom: 1px solid #000;
+}
+
+.feedback__item-edit-descr {
+  grid-column: 2/4;
+
+  @include phone {
+    margin-top: 20px;
+    grid-column: intial;
+  }
+}
+
+.feedback__item-edit-textarea {
+  width: 100%;
+  height: 120px;
+  margin-top: 15px;
+  border: 1px solid #000;
+  resize: none;
+}
+
+.feedback__item-edit-btn-wrap {
+  width: 80%;
+  margin-left: 15px;
+  margin-top: 25px;
+  display: flex;
+  justify-content: flex-end;
+
+  @include tablet {
+    width: 90%;
+  }
+  @include phone {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.feedback__item-edit-btn-cancel {
+  background-color: transparent;
+  color: #383bcf;
+}
+
+.feedback__item-edit-btn-save {
+  background-color: transparent;
+  width: 181px;
+  height: 60px;
+  margin-left: 60px;
+  border-radius: 30px;
+  color: #ffffff;
+  background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
+}
+.feedback__grid {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+
+  @include tablet {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include phone {
+    grid-template-columns: 1fr;
+  }
+}
+.feedback__grid-add {
+  min-height: 300px;
+
+  @include phone {
+    height: 100%;
+  }
+}
+
+.feedback__grid-item {
+  padding: 20px;
+  box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
+  background-color: #ffffff;
+}
+
+.feedback__grid-item-row {
+  display: flex;
+  justify-content: flex-start;
+  padding-bottom: 30px;
+  border-bottom: 1px solid silver;
+}
+
+.feedback__grid-item-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.feedback__grid-item-title-wrap {
+  margin-left: 30px;
+}
+
+.feedback__grid-item-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.feedback__grid-item-descr {
+  margin-top: 30px;
+}
+
+.feedback__grid-item-controls {
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-between;
 }
 
 </style>
