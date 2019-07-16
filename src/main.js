@@ -8,3 +8,14 @@ import "./scripts/fs-menu";
 import "./scripts/skills";
 import "./scripts/feedback";
 import "./scripts/slider";
+import Validate from "./scripts/form";
+
+const form = document.querySelector('.j-form');
+
+if (form) {
+  const validate = new Validate({
+    element: '.j-form'
+  });
+
+  validate.init();
+}

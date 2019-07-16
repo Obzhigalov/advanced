@@ -7,12 +7,16 @@ html(lang="ru")
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
 		meta(http-equiv="X-UA-Compatible", content="ie=edge")
 		title Portfolio | main page
-	body
+	body.body--modal
 		.wrapper
 			include /components/main.pug
 			include /components/about.pug
 			include /components/skills.pug
 			include /components/portfolio.pug
+			.popup.j-popup
+				.popup__wrap
+					.popup__content
+					button(type="button").popup__close Закрыть
 			.sections-bg-wrap
 				.sections-bg-wrap__gradient
 				.container
