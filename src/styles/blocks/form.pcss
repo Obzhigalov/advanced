@@ -14,8 +14,20 @@
   }
 }
 .form__label {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
+}
+.form__error {
+  display: none;
+  position: absolute;
+  top: 100%;
+  font-size: 14px;
+  background-color: red;
+  padding: 10px;
+}
+.has-error {
+  display: flex;
 }
 .form__input:focus ~ .form__svg-wrap .form__svg {
   fill: $orange;

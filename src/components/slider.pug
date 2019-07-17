@@ -1,28 +1,60 @@
-mixin sliderList(slidesNum)
-  ul.slider__list
-    - for(var i = 0; i < slidesNum.length; i++)
-      li.slider__list-item(data-slide=`${slidesNum[i]}`)
-        +image(`content/portfolio/project-${slidesNum[i]}.png`, 'slider__list-item-pic', '', 'Проект Андрея Обжигалов из портфолио')
+script(type="text/x-template")#slider-template
+  .slider-wrap(:data-slide="currentIndex + 1")
+    sliderDisplay(
+      :sliderData='sliderData'
+      :currentProject='currentProject'
+      @slide="handleSlide"
+      @choose="chooseSlide"
+      
+    )
+    sliderContent(
+      :currentProject='currentProject'
+    )
 
-.slider-wrap
+script(type="text/x-template")#sliderDisplay-template
   .slider
-    +image('content/portfolio/project-preview-1.png', 'slider__preview', '', 'Превью проекта Андрея Обжигалова из портфолио')
-    .slider__list-wrap 
-      +sliderList(['1','2','3','4'])
-    .slider__switch-wrap
-      button.slider__switch(class="slider__switch-next" type="button")
-        +icon('arrow-down', 'slider__arrow-svg slider__arrow-svg-next')
-      button.slider__switch(class="slider__switch-prev" type="button")
-        +icon('arrow-down', 'slider__arrow-svg slider__arrow-svg-prev slider__arrow-svg--denied')
+    img(:src='currentProject.photo' alt = 'Превью проекта Андрея Обжигалова из портфолио').slider__preview
+    sliderList(
+      :sliderData='sliderData'
+      :currentProject='currentProject'
+      @choose="index => $emit('choose', index)"
+    )
+    sliderSwitch(
+      @slide="direction => $emit('slide', direction)"
+    )
+
+script(type="text/x-template")#sliderList-template
+  .slider__list-wrap 
+    .slider__list
+      button.slider__list-item(
+        type="button"
+        v-for='item in sliderData'
+        :class="{sliderListItemActive: item.id === currentProject.id}"
+        @click="$emit('choose', item.id - 1)"
+      )
+        img(:src='item.photo' alt="Проект Андрея Обжигалов из портфолио").slider__list-item-pic
+
+script(type="text/x-template")#sliderSwitch-template
+  .slider__switch-wrap
+    button(@click="$emit('slide', 'next')" class="slider__switch-next" type="button").slider__switch
+      +icon('arrow-down', 'slider__arrow-svg slider__arrow-svg-next')
+    button(@click="$emit('slide', 'prev')"  class="slider__switch-prev" type="button").slider__switch
+      +icon('arrow-down', 'slider__arrow-svg slider__arrow-svg-prev')
+
+script(type="text/x-template")#sliderContent-template
   .description-wrap
     .description
-      ul.description__tags-list
-        li.description__tags-list__item HTML
-        li.description__tags-list__item CSS
-        li.description__tags-list__item Javacript
+      sliderContentTags(
+        :tags="tagsArray"
+      )
       .description__content
-        h4.description__title Сайт школы образования
+        h4.description__title {{currentProject.title}}
         .description__info
-          p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
-        a.description__link(href="#") Посмотреть сайт
+          p {{currentProject.info}}
+        a.description__link(:href="currentProject.link") Посмотреть сайт
           +icon('link', 'description__link-svg')
+
+script(type="text/x-template")#sliderContentTags-template
+  ul.description__tags-list
+    li(v-for="tag in tags").description__tags-list__item {{tag}}
+    
