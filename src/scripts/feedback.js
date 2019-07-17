@@ -4,7 +4,7 @@ import Flickity from 'vue-flickity';
 const feedbackSliderItem = {
   template: '#feedbackSliderItem-template',
   props: {
-    feedback: Object
+    feedback: Object,
   }
 }
 
@@ -18,6 +18,8 @@ new Vue({
   data() {
     return {
       feedbackData: [],
+      btnIndex: 0,
+      btnClicks: undefined,
       flickityOptions: {
         initialIndex: 0,
         prevNextButtons: false,
@@ -41,10 +43,24 @@ new Vue({
     },
     next() {
       this.$refs.flickity.next();
+      if(window.innerWidth < 480) {
+        if(this.btnIndex < this.feedbackData.length - 1) {
+          this.btnIndex ++;
+          this.btnClicks = this.feedbackData.length - 1;
+        }
+      } else {
+        if(this.btnIndex < this.feedbackData.length/2 - 1) {
+          this.btnIndex ++;
+          this.btnClicks = this.feedbackData.length/2 - 1;
+        }
+      }
     },
     
     previous() {
       this.$refs.flickity.previous();
+      if(this.btnIndex > 0) {
+        this.btnIndex --;
+      }
     }
   },
   created() {

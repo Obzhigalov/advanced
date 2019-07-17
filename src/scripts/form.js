@@ -154,7 +154,7 @@ class Validate {
 
       const closePopupBtn = popup.querySelector('.popup__close');
 
-      closePopupBtn.addEventListener('click', (event) => {
+      closePopupBtn.addEventListener('click', () => {
         popup.classList.remove('popup--active');
         body.classList.remove('body--modal');
       })

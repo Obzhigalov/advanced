@@ -27,9 +27,21 @@
     transition: border 0.3s;
   }
 }
+.feedbackBtnOff {
+  border: 1px solid $grey;
+  &:hover {
+    border: 1px solid $grey;
+  }
+}
+.feedbackBtnOff .feedback-slider__switch-svg {
+  fill: $grey;
+}
 .feedback-slider__switch-item:hover .feedback-slider__switch-svg {
   fill: $orange;
   transition: fill 0.3s;
+}
+.feedbackBtnOff:hover .feedback-slider__switch-svg {
+  fill: $grey;
 }
 .feedback-slider__switch-svg {
   fill: $white;
