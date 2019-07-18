@@ -7,7 +7,7 @@
             img(src="../images/content/about/avatar.jpg").header__avatar
           h1.header__title Обжигалов Андрей
           h2.header__subtitile Панель администрирования
-        a.header__logout Выйти
+        a(herf="#").header__logout Выйти
     .container
       nav.nav
         ul.nav__list
@@ -20,7 +20,7 @@
     section.about
       .container
         .about__row
-          .about__title Блок "Обо мне"
+          h3.about__title Блок "Обо мне"
           button(type="button").btn-add.btn-add--group +
         .about-grid
           form.about-grid__item
@@ -106,10 +106,10 @@
               button(type="button").btn-add.btn-add--skill +
     section.projects
       .container
-        .projects__title Блок «Работы»
+        h3.projects__title Блок «Работы»
         .projects__item
           .projects__item-row
-            .projects__item-title Редактирование работы
+            h4.projects__item-title Редактирование работы
           .pojects__item-edit
             .pojects__item-photo
               .projects__item-photo-text Перетащите или загрузите для загрузки изображения
@@ -193,8 +193,8 @@
                 .projects__grid-item-controls-wrap
                   button(type="button").controls-del Удалить
     section.login
-      .login__card
-        .login__title Авторизация
+      form.login__card
+        h3.login__title Авторизация
          .login__row 
           label.login__label
             .login__label-title Логин
@@ -203,7 +203,7 @@
           label.login__label
             .login__label-title Пароль
             input.login__input
-        button.login__button Войти
+        button(type="submit").login__button Войти
 </template>
 
 <style lang="pcss">
