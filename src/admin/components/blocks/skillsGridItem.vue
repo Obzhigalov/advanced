@@ -1,123 +1,67 @@
 <template lang="pug">
-section.about
-  .container
-    .about__row
-      h3.about__title Блок "Обо мне"
-      button(type="button").btn-add.btn-add--group +
-    .about-grid
-      skills-grid-item
-      pre {{skills}}
-      
+  form.about-grid__item
+    .about-grid__item-upper-row
+      input(type="text" value="Frontend" v-model="skill.category").about-grid__item-group-name
+      button(type="button" @click="addNewCategory") Категории
+      .about-grid__item-btns-wrap
+        button(type="button").about-grid__item-ok
+        button(type="button").about-grid__item-edit
+    ul.about-grid__item-skills-list
+      SkillsGridItemRow
+    .about-grid__item-lower-row
+      input(type="text" placeholder="Новый навык" v-model="skill.title").about-grid__item-skill-name
+      input(type="text" value="100%" v-model="skill.percent").about-grid__item-skill-value
+      button(type="button" @click="addNewSkill").btn-add.btn-add--skill +
 </template>
 
 <script>
-//- import SkillsGridItem from "./blocks/skillsGridItem"
-import {mapActions, mapState} from "vuex"
+import {mapActions} from "vuex";
 
 export default {
+  components: {
+    SkillsGridItemRow: () => import('./skillsGridItemRow.vue')
+  },
   data() {
     return {
-      lol: this.$store.categories.state.categoriesList
+      skill: {
+        title: "",
+        percent: "",
+        category: "829"
+      },
+      createCategory: {
+        title: "Workflow"
+      }
     }
-  },
-  components: {
-    SkillsGridItem: () => import('./blocks/skillsGridItem.vue')
-  },
-  computed: {
-    ...mapState('skills', {
-      skills: state => state.skills
-    }),
-    ...mapState('categories', {
-      newCategoriesList: state => state.categoriesList
-    }),
   },
   methods: {
-    ...mapActions('skills', ['fetchSkills']),
-    ...mapActions('categories', ['fetchCategories'])
+    ...mapActions('skills',['addSkill']),
+    ...mapActions('categories',['addCategory']),
+    
+    async addNewSkill() {
+      try {
+        await this.addSkill(this.skill);
+      } catch(error) {
+        alert(error.message)
+      }
+    },
+    async addNewCategory() {
+      try {
+        await this.addCategory(this.createCategory);
+      } catch {
+        
+      } 
+    }
   },
-  async created() {
-    try {
-      this.fetchCategories();
-    } catch(error) {
-
-    }
-    try {
-      this.fetchSkills();
-    } catch (error) {}
-    }
-}
-
-</script>
-
-<style lang="postcss" scoped>
-@import "normalize.css";
-@import url('../../styles/mixins');
-@import url('../../styles/layout/base');
-
-
-.container {
-  max-width: 1200px;
-}
-
-
-.about {
-  padding-top: 60px;
-  padding-bottom: 30px;
-  background-color: #f8f9fe;
-}
-
-.about__row {
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.about__title {
-  font-size: 21px;
-  font-weight: 700;
-}
-
-.btn-add {
-  color: #fff;
-  background: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.btn-add--group {
-  position: relative;
-  width: 21px;
-  height: 21px;
-  margin-left: 40px;
-    &::after {
-      content: "Добавить группу";
-      position: absolute;
-      right: -130px;
-      color: #383bcf;
-    }
-}
-
-
-.about__add-skill-group-text {
-  margin-left: 15px;
-  color: #3f35cb;
-  font-size: 16px;
-  font-weight: 700;
-}
-
-.about-grid {
-  margin-top: 60px;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
-
-  @include phone {
-    grid-template-columns: 1fr;
+  created() {
+    
   }
 }
+</script>
+
+<style lang="pcss">
+@import "normalize.css";
+@import url('../../../styles/mixins');
+@import url('../../../styles/layout/base');
 
 .about-grid__item {
   width: 100%;
@@ -238,7 +182,14 @@ export default {
   outline: none;
   border-bottom: 1px solid #000;
 }
-
+.btn-add {
+  color: #fff;
+  background: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .btn-add--skill {
   width: 40px;
   height: 40px;
