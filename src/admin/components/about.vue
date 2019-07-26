@@ -4,9 +4,10 @@ section.about
     .about__row
       h3.about__title Блок "Обо мне"
       button(type="button").btn-add.btn-add--group +
-    .about-grid
-      skills-grid-item
-      pre {{skills}}
+    skills-grid-item(
+      :categories='categories'
+      :skills='skills'
+    )
       
 </template>
 
@@ -17,7 +18,7 @@ import {mapActions, mapState} from "vuex"
 export default {
   data() {
     return {
-      lol: this.$store.categories.state.categoriesList
+      
     }
   },
   components: {
@@ -28,7 +29,7 @@ export default {
       skills: state => state.skills
     }),
     ...mapState('categories', {
-      newCategoriesList: state => state.categoriesList
+      categories: state => state.categories
     }),
   },
   methods: {
@@ -44,7 +45,10 @@ export default {
     try {
       this.fetchSkills();
     } catch (error) {}
-    }
+  },
+  mounted() {
+    
+  }
 }
 
 </script>

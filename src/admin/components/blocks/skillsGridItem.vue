@@ -1,48 +1,45 @@
 <template lang="pug">
-  form.about-grid__item
-    .about-grid__item-upper-row
-      input(type="text" value="Frontend" v-model="skill.category").about-grid__item-group-name
-      button(type="button" @click="addNewCategory") Категории
-      .about-grid__item-btns-wrap
-        button(type="button").about-grid__item-ok
-        button(type="button").about-grid__item-edit
-    ul.about-grid__item-skills-list
-      SkillsGridItemRow
-    .about-grid__item-lower-row
-      input(type="text" placeholder="Новый навык" v-model="skill.title").about-grid__item-skill-name
-      input(type="text" value="100%" v-model="skill.percent").about-grid__item-skill-value
-      button(type="button" @click="addNewSkill").btn-add.btn-add--skill +
+  .about-grid
+    form.about-grid__item(v-for='category in categories')
+      .about-grid__item-upper-row
+        input(type="text" :value="category.category").about-grid__item-group-name 
+        button(type="button" @click="lol") Категории
+        .about-grid__item-btns-wrap
+          button(type="button").about-grid__item-ok
+          button(type="button").about-grid__item-edit
+      SkillsGridItemRow(
+          :skills="filterSkillsByCategoryId(category.id)"
+          :categoryId="category.id"
+        )
+      
 </template>
 
 <script>
+import $axios from "../../requests.js"
 import {mapActions} from "vuex";
 
 export default {
+  props: {
+    categories: Array,
+    skills: Array
+  },
   components: {
     SkillsGridItemRow: () => import('./skillsGridItemRow.vue')
   },
   data() {
     return {
-      skill: {
-        title: "",
-        percent: "",
-        category: "829"
-      },
       createCategory: {
         title: "Workflow"
       }
     }
   },
   methods: {
-    ...mapActions('skills',['addSkill']),
     ...mapActions('categories',['addCategory']),
-    
-    async addNewSkill() {
-      try {
-        await this.addSkill(this.skill);
-      } catch(error) {
-        alert(error.message)
-      }
+    filterSkillsByCategoryId(categoryId) {
+      return this.skills.filter(skill => skill.category === categoryId)
+    },
+    lol() {
+      console.log(this.categories)
     },
     async addNewCategory() {
       try {
@@ -53,7 +50,7 @@ export default {
     }
   },
   created() {
-    
+    console.log(this.skills)
   }
 }
 </script>

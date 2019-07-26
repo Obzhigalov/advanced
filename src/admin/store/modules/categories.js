@@ -1,11 +1,11 @@
 export default {
   namespaced: true,
   state: {
-    categoriesList: []
+    categories: []
   },
   mutations: {
-    SET_CATEGORIES(state, newCategoriesList) {
-      state.categoriesList = newCategoriesList
+    SET_CATEGORIES(state, categories) {
+      state.categories = categories
     }
   },
   actions: {
@@ -24,7 +24,7 @@ export default {
       // // for(var i = 0; i < response.data.length; i++) {
       // //   createCategoryArray.push(response.data[i].category);
       // // }
-      commit("SET_CATEGORIES", response)
+      commit("SET_CATEGORIES", response.data)
     }
   },
   getters: {},
