@@ -8,9 +8,13 @@
           button(type="button").about-grid__item-edit
           button(type="button" @click="deleteCurrentCategory(category.id)").about-grid__item-del
       SkillsGridItemRow(
-          :skills="filterSkillsByCategoryId(category.id)"
           :category="category"
+          :skills="skills"
         )
+      .about-grid__item-lower-row.about-grid__item-lower-row--blocked
+        input(type="text" placeholder="Новый навык" v-model="skillAdd.title" :disabled="addSkillFormBlocked").about-grid__item-skill-name
+        input(type="text" value="100%" v-model="skillAdd.percent" :disabled="addSkillFormBlocked").about-grid__item-skill-value
+        button(type="button" @click="addNewSkill" :disabled="addSkillFormBlocked").btn-add.btn-add--skill +
 </template>
 
 <script>
@@ -20,7 +24,12 @@ import {mapActions} from "vuex";
 export default {
   data() {
     return {
-      
+      skillAdd: {
+        title: "",
+        percent: "",
+        category: this.category.id
+      },
+      addSkillFormBlocked: false,
     }
   },
   props: {
@@ -31,8 +40,19 @@ export default {
     SkillsGridItemRow: () => import('./skillsGridItemRow.vue')
   },
   methods: {
-    filterSkillsByCategoryId(categoryId) {
-      return this.skills.filter(skill => skill.category === categoryId)
+    ...mapActions('skills',['addSkill']),
+    async addNewSkill() {
+      this.addSkillFormBlocked = true;
+      try {
+        console.log(this.skillAdd)
+        await this.addSkill(this.skillAdd);
+        this.skillAdd.title = "";
+        this.skillAdd.percent = "";
+      } catch(error) {
+        alert(error.message)
+      } finally {
+        this.addSkillFormBlocked = false;
+      }
     },
     ...mapActions('categories', ['deleteCategory']),
     deleteCurrentCategory(categoryId) {

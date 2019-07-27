@@ -14,7 +14,7 @@ section.about
       skills-grid-item(
         v-for='category in categories'
         :category='category'
-        :skills='skills'
+        :skills="filterSkillsByCategoryId(category.id)"
       )
       
 </template>
@@ -61,7 +61,10 @@ export default {
       } finally {
         this.addCategoryMode = false
       }
-  }
+  },
+  filterSkillsByCategoryId(categoryId) {
+      return this.skills.filter(skill => skill.category === categoryId)
+    },
   },
   async created() {
     try {

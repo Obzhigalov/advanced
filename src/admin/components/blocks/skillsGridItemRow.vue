@@ -9,15 +9,11 @@ div
         button(v-if="editSkillMode == true" type="button"  @click="editSkillMode = false").about-grid__item-deny
         button(v-if="editSkillMode == false" type="button" @click="editSkillMode = true").about-grid__item-edit
         button(v-if="editSkillMode == false" type="button" @click="removeExistedSkill(skill.id)").about-grid__item-del
-  .about-grid__item-lower-row.about-grid__item-lower-row--blocked
-    input(type="text" placeholder="Новый навык" v-model="skillAdd.title" :disabled="addSkillFormBlocked").about-grid__item-skill-name
-    input(type="text" value="100%" v-model="skillAdd.percent" :disabled="addSkillFormBlocked").about-grid__item-skill-value
-    button(type="button" @click="addNewSkill" :disabled="addSkillFormBlocked").btn-add.btn-add--skill +
 </template>
 
 <script>
 import $axios from "../../requests.js"
-import {mapActions} from "vuex"
+import {mapActions, mapState} from "vuex"
 
 export default {
   data() {
@@ -36,6 +32,7 @@ export default {
     skills: Array,
     category: Object
   },
+
   methods: {
     ...mapActions('skills',['addSkill']),
     ...mapActions('skills',['removeSkill']),
