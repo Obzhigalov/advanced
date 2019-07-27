@@ -50,10 +50,9 @@ section.projects
               button(type="button").controls-del Удалить
 </template>
 
-<style lang="postcss" >
+<style lang="postcss" scoped>
 @import "normalize.css";
 @import url('../../styles/mixins');
-@import url('../../styles/layout/base');
 
 
 .container {

@@ -1,6 +1,7 @@
 <template lang="pug">
-.container
-  nav.nav
+
+nav.nav
+  .container
     ul.nav__list
       li.nav-list__item
         router-link(

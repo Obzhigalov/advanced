@@ -3,11 +3,19 @@ section.about
   .container
     .about__row
       h3.about__title Блок "Обо мне"
-      button(type="button").btn-add.btn-add--group +
-    skills-grid-item(
-      :categories='categories'
-      :skills='skills'
-    )
+      button(type="button" @click="addCategoryModeOn").btn-add.btn-add--group +
+    .about-grid
+      form.about-grid__item(v-if="addCategoryMode")
+        .about-grid__item-upper-row
+          input(type="text" placeholder="Введите название новой категории" v-model="newCategory.title").about-grid__item-group-name 
+          .about-grid__item-btns-wrap
+            button(type="button" v-if="addCategoryMode" @click="addNewCategory").about-grid__item-ok
+            button(type="button" v-if="addCategoryMode").about-grid__item-deny
+      skills-grid-item(
+        v-for='category in categories'
+        :category='category'
+        :skills='skills'
+      )
       
 </template>
 
@@ -18,7 +26,10 @@ import {mapActions, mapState} from "vuex"
 export default {
   data() {
     return {
-      
+      addCategoryMode: false,
+      newCategory: {
+        title: ""
+      }
     }
   },
   components: {
@@ -34,7 +45,23 @@ export default {
   },
   methods: {
     ...mapActions('skills', ['fetchSkills']),
-    ...mapActions('categories', ['fetchCategories'])
+    ...mapActions('categories', ['fetchCategories']),
+
+    addCategoryModeOn() {
+      this.addCategoryMode = true
+    },
+    ...mapActions('categories',['addCategory']),
+    async addNewCategory() {
+      try {
+        await this.addCategory(this.newCategory);
+        this.newCategory.title = "";
+        this.addCategoryMode = false;
+      } catch {
+        
+      } finally {
+        this.addCategoryMode = false
+      }
+  }
   },
   async created() {
     try {
@@ -45,9 +72,6 @@ export default {
     try {
       this.fetchSkills();
     } catch (error) {}
-  },
-  mounted() {
-    
   }
 }
 
@@ -65,6 +89,7 @@ export default {
 
 
 .about {
+  min-height: 100%;
   padding-top: 60px;
   padding-bottom: 30px;
   background-color: #f8f9fe;

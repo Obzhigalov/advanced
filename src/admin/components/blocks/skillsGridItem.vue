@@ -1,17 +1,16 @@
 <template lang="pug">
-  .about-grid
-    form.about-grid__item(v-for='category in categories')
+    form.about-grid__item
       .about-grid__item-upper-row
         input(type="text" :value="category.category").about-grid__item-group-name 
-        button(type="button" @click="lol") Категории
         .about-grid__item-btns-wrap
           button(type="button").about-grid__item-ok
+          button(type="button").about-grid__item-deny
           button(type="button").about-grid__item-edit
+          button(type="button" @click="deleteCurrentCategory(category.id)").about-grid__item-del
       SkillsGridItemRow(
           :skills="filterSkillsByCategoryId(category.id)"
-          :categoryId="category.id"
+          :category="category"
         )
-      
 </template>
 
 <script>
@@ -19,38 +18,30 @@ import $axios from "../../requests.js"
 import {mapActions} from "vuex";
 
 export default {
+  data() {
+    return {
+      
+    }
+  },
   props: {
-    categories: Array,
-    skills: Array
+    skills: Array,
+    category: Object,
   },
   components: {
     SkillsGridItemRow: () => import('./skillsGridItemRow.vue')
   },
-  data() {
-    return {
-      createCategory: {
-        title: "Workflow"
-      }
-    }
-  },
   methods: {
-    ...mapActions('categories',['addCategory']),
     filterSkillsByCategoryId(categoryId) {
       return this.skills.filter(skill => skill.category === categoryId)
     },
-    lol() {
-      console.log(this.categories)
-    },
-    async addNewCategory() {
-      try {
-        await this.addCategory(this.createCategory);
-      } catch {
-        
-      } 
+    ...mapActions('categories', ['deleteCategory']),
+    deleteCurrentCategory(categoryId) {
+      console.log(categoryId)
+      this.deleteCategory(categoryId)
     }
   },
   created() {
-    console.log(this.skills)
+    
   }
 }
 </script>
@@ -161,6 +152,10 @@ export default {
 .about-grid__item-lower-row {
   display: flex;
   justify-content: flex-end;
+}
+
+.about-grid__item-lower-row--blocked {
+  
 }
 
 .about-grid__item-skill-name {
