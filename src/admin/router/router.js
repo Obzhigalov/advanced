@@ -28,7 +28,6 @@ router.beforeEach(async (to, from, next) => {
       try {
         console.log('11111111111')
         const response = await guard.get("/user");
-        console.log('lolo', response);
         store.commit("user/SET_USER", response.data.user);
         next();
       } catch(error) {

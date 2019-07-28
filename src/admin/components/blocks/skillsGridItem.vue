@@ -1,12 +1,12 @@
 <template lang="pug">
     form.about-grid__item
       .about-grid__item-upper-row
-        input(type="text" :value="category.category").about-grid__item-group-name 
+        input(type="text" v-model="category.category" :disabled="!editCategoryMode").about-grid__item-group-name 
         .about-grid__item-btns-wrap
-          button(type="button").about-grid__item-ok
-          button(type="button").about-grid__item-deny
-          button(type="button").about-grid__item-edit
-          button(type="button" @click="deleteCurrentCategory(category.id)").about-grid__item-del
+          button(type="button" v-if="editCategoryMode" @click="editCurrentCategory()").about-grid__item-ok
+          button(type="button" v-if="editCategoryMode" @click="editCategoryMode = false").about-grid__item-deny
+          button(type="button" v-if="!editCategoryMode" @click="editCategoryMode = true").about-grid__item-edit
+          button(type="button" v-if="!editCategoryMode" @click="deleteCurrentCategory(category.id)").about-grid__item-del
       SkillsGridItemRow(
           :category="category"
           :skills="skills"
@@ -29,7 +29,11 @@ export default {
         percent: "",
         category: this.category.id
       },
+      editCategoryData: {
+        title: this.category.category
+      },
       addSkillFormBlocked: false,
+      editCategoryMode: false
     }
   },
   props: {
@@ -58,6 +62,18 @@ export default {
     deleteCurrentCategory(categoryId) {
       console.log(categoryId)
       this.deleteCategory(categoryId)
+    },
+    ...mapActions('categories', ['editCategory']),
+    async editCurrentCategory() {
+      try {
+        await this.editCategory({
+                  id: this.category.id,
+                  title: this.category.category});
+        this.editCategoryMode = false;
+      } catch {
+
+      }
+      
     }
   },
   created() {

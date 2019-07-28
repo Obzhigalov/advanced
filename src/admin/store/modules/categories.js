@@ -12,6 +12,11 @@ export default {
     },
     DELETE_CATEGORY(state, categoryId) {
       state.categories = state.categories.filter(category => category.id != categoryId);
+    },
+    EDIT_CATEGORY(state, editCategory) {
+      state.categories = state.categories.map(category => {
+        return category.id == editCategory.id ? editCategory : category;
+      })
     }
   },
   actions: {
@@ -41,6 +46,17 @@ export default {
         const response = await this.$axios.delete(`/categories/${categoryId}`)
 
         commit("DELETE_CATEGORY", categoryId)
+      } catch {
+
+      }
+    },
+    async editCategory({commit}, editCategory) {
+      try {
+        console.log(editCategory.id)
+        console.log(editCategory.title)
+        const response = await this.$axios.post(`/categories/${editCategory.id}`, editCategory);
+        console.log(response)
+        commit("EDIT_CATEGORY", response.data.category)
       } catch {
 
       }

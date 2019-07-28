@@ -59,6 +59,7 @@ export default {
     },
     async editCurrentSkill(skill) {
       try {
+        console.log(skill)
         await this.editSkill(skill);
         this.editSkillMode = false;
       } catch {

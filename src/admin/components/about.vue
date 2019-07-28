@@ -10,10 +10,11 @@ section.about
           input(type="text" placeholder="Введите название новой категории" v-model="newCategory.title").about-grid__item-group-name 
           .about-grid__item-btns-wrap
             button(type="button" v-if="addCategoryMode" @click="addNewCategory").about-grid__item-ok
-            button(type="button" v-if="addCategoryMode").about-grid__item-deny
+            button(type="button" v-if="addCategoryMode" @click="addCategoryMode = false").about-grid__item-deny
       skills-grid-item(
         v-for='category in categories'
         :category='category'
+        :key="category.id"
         :skills="filterSkillsByCategoryId(category.id)"
       )
       
