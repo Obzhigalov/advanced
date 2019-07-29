@@ -2,51 +2,75 @@
 section.feedback
   .container
     .feedback__title Блок "Отзывы"
-    .feedback__item-edit
-      .feedback__item-edit-row Новый отзыв
-      form.feedback__item-edit-content
-        .feedback__item-edit-photo
-          .feedback__item-edit-avatar
-          button(type="button").feedback__item-edit-avatar-add Добавить фото
-        label.feedback__item-edit-label
-          .feedback__item-edit-label-title Имя автора
-          input(type="text").feedback__item-edit-input
-        label.feedback__item-edit-label
-          .feedback__item-edit-label-title Титул автора
-          input(type="text").feedback__item-edit-input
-        label.feedback__item-edit-descr
-          .feedback__item-edit-label-title Отзыв
-          textarea(name="feedback").feedback__item-edit-textarea
-      .feedback__item-edit-btn-wrap
-        button(type="button").feedback__item-edit-btn-cancel Отмена
-        button(type="button").feedback__item-edit-btn-save Загрузить
+    addFeedback(
+      v-if="addCategoryMode"
+      v-on:cancelItem = "addCategoryMode = false"
+    )
+    editFeedback(
+      v-if="editCategoryMode"
+      v-on:editFeedback = "editCurrentFeedback"
+    )
     ul.feedback__grid
       li.feedback__grid-add
-        button(type="button").add-btn
+        button(type="button" @click="addCategoryMode = true").add-btn
           .add-circle +
           .add-title Добавить работу
-      li.feedback__grid-item
-        .feedback__grid-item-row
-          .feedback__grid-item-avatar
-            img(src="../../images/content/feedback/vova.png")
-          .feedback__grid-item-title-wrap
-            .feedback__grid-item-title Владимир Сабанцев
-            .feedback__grid-item-subtitle Преподаватель
-        .feedback__grid-item-descr Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-        .feedback__grid-item-controls
-          .controls-wrap
-            button(type="button").controls-edit Править
-          .projects__grid-item-controls-wrap
-            button(type="button").controls-del Удалить
+      feedbackGridItem(
+        v-for="feedback in feedbacks"
+        :feedback="feedback"
+        :key="feedback.id"
+        )
+      
 </template>
 
-<style lang="pcss" scoped>
+<script>
+import {mapActions, mapState} from "vuex"
+
+export default {
+  data() {
+    return {
+      addCategoryMode: false,
+      editCategoryMode: false,
+      editFeedbackData: {
+
+      }
+    }
+  },
+  components: {
+    addFeedback: () => import('./blocks/addFeedback.vue'),
+    feedbackGridItem: () => import('./blocks/feedbackGridItem.vue'),
+    editFeedback: () => import('./blocks/editFeedback.vue')
+  },
+  computed: {
+    ...mapState('feedbacks', {
+      feedbacks: state => state.feedbacks
+    }),
+  },
+  methods: {
+    ...mapActions('feedbacks', ['fetchFeedbacks']),
+    editCurrentFeedback(editFeedbackData) {
+      console.log('lol')
+    }
+  },
+  async created() {
+    try {
+      this.fetchFeedbacks();
+    } catch (error) {
+
+    }
+  }
+}
+</script>
+
+<style lang="pcss">
 @import "normalize.css";
 @import url('../../styles/mixins');
 @import url('../../styles/layout/base');
 
+
 .add-btn {
   height: 100%;
+  min-height: 100%;
   width: 100%;
   background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
   display: flex;
@@ -197,6 +221,12 @@ section.feedback
   background-color: transparent;
 }
 
+
+.feedback__item-edit-avatar-load  {
+  margin-top: 20px;
+}
+
+
 .feedback__item-edit-label {
   display: flex;
   flex-direction: column;
@@ -276,7 +306,7 @@ section.feedback
   }
 }
 .feedback__grid-add {
-  min-height: 300px;
+ 
 
   @include phone {
     height: 100%;
@@ -287,6 +317,9 @@ section.feedback
   padding: 20px;
   box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
   background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .feedback__grid-item-row {
