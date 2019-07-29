@@ -4,11 +4,11 @@ section.feedback
     .feedback__title Блок "Отзывы"
     addFeedback(
       v-if="addCategoryMode"
-      v-on:cancelItem = "addCategoryMode = false"
+      @cancelItem = "addCategoryMode = false"
     )
     editFeedback(
       v-if="editCategoryMode"
-      v-on:editFeedback = "editCurrentFeedback"
+      @cancelEditItem = "editCategoryMode = false"
     )
     ul.feedback__grid
       li.feedback__grid-add
@@ -17,6 +17,7 @@ section.feedback
           .add-title Добавить работу
       feedbackGridItem(
         v-for="feedback in feedbacks"
+        @editFeedback = "editCurrentFeedback"
         :feedback="feedback"
         :key="feedback.id"
         )
@@ -31,7 +32,7 @@ export default {
     return {
       addCategoryMode: false,
       editCategoryMode: false,
-      editFeedbackData: {
+      feedbackForEdit: {
 
       }
     }
@@ -49,7 +50,8 @@ export default {
   methods: {
     ...mapActions('feedbacks', ['fetchFeedbacks']),
     editCurrentFeedback(editFeedbackData) {
-      console.log('lol')
+      console.log(editFeedbackData)
+      this.editCategoryMode = true;
     }
   },
   async created() {
@@ -213,6 +215,10 @@ export default {
               width=85px,
               height=113px
             ) center no-repeat #dee4ed;
+}
+
+.feedback__item-edit-avatar-img {
+  border-radius: 50%;
 }
 
 .feedback__item-edit-avatar-add {

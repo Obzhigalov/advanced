@@ -16,7 +16,7 @@
       .feedback__item-edit-label-title Отзыв
       textarea(name="feedback" v-model="addFeedbackData.text").feedback__item-edit-textarea
   .feedback__item-edit-btn-wrap
-    button(type="button" v-on:click="$emit('cancelItem')").feedback__item-edit-btn-cancel Отмена
+    button(type="button" @click="$emit('cancelItem')").feedback__item-edit-btn-cancel Отмена
     button(type="button" @click="addnewFeedback").feedback__item-edit-btn-save Загрузить
 
 </template>
@@ -47,7 +47,6 @@ export default {
   },
   methods: {
     renderFile(e) {
-      const preview = document.querySelector('.feedback__item-edit-avatar')
       const file = e.target.files[0];
       this.addFeedbackData.photo = file
       const reader = new FileReader();
