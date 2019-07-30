@@ -36,6 +36,7 @@ export default {
       // // for(var i = 0; i < response.data.length; i++) {
       // //   createCategoryArray.push(response.data[i].category);
       // // }
+      console.log(response.data)
       commit("SET_CATEGORIES", response.data)
       } catch {
 
