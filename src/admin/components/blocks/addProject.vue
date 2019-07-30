@@ -5,35 +5,81 @@
   .pojects__item-edit
     .pojects__item-photo
       .projects__item-photo-text Перетащите или загрузите для загрузки изображения
-      button(type="button").pojects__item-photo-upload Загрузить
+      //- button(type="button").pojects__item-photo-upload Загрузить
+      input(type="file" accept="image/jpeg" @change='addProjectFile')
     form.projects__item-content
       label.projects__item-content-label
         .projects__item-content-label-title Название
-        input(type="text").projects__item-content-input
+        input(type="text" v-model="addProjectData.title").projects__item-content-input
       label.projects__item-content-label Ссылка
         .projects__item-content-label-title
-        input(type="text").projects__item-content-input
+        input(type="text" v-model="addProjectData.link").projects__item-content-input
       label.projects__item-content-label Описание
         .projects__item-content-label-title
-        textarea(name="projectContent", cols="30", rows="10").projects__item-content-textarea
+        textarea(name="projectContent", cols="30", rows="10" v-model="addProjectData.description").projects__item-content-textarea
       label.projects__item-content-label
-        .projects__item-content-label-title Добавление тэга
-        input(type="text").projects__item-content-input
-      ul.projects__item-content-tags
-        li.projects__item-content-tags-item HTML
-          button(type="button").projects__item-content-tags-item-del
-        li.projects__item-content-tags-item CSS
-          button(type="button").projects__item-content-tags-item-del
-        li.projects__item-content-tags-item JavaScript
-          button(type="button").projects__item-content-tags-item-del
+        .projects__item-content-label-title Добавление тэгов
+        input(type="text" placeholder="Введите тэги через запятую" v-model="addProjectData.techs").projects__item-content-input
+      //- ul.projects__item-content-tags
+      //-   li.projects__item-content-tags-item HTML
+      //-     button(type="button").projects__item-content-tags-item-del
+      //-   li.projects__item-content-tags-item CSS
+      //-     button(type="button").projects__item-content-tags-item-del
+      //-   li.projects__item-content-tags-item JavaScript
+      //-     button(type="button").projects__item-content-tags-item-del
       .projects__item-content-btn-wrap
-        button(type="button" @click="addProjectMode = false").projects__item-content-btn-decline Отмена
-        button(type="button").projects__item-content-btn-save Загрузить
+        button(type="button" @click="$emit('cancelItem')").projects__item-content-btn-decline Отмена
+        button(type="button" @click="addNewProject").projects__item-content-btn-save Загрузить
 </template>
+
+<script>
+import {mapActions, mapState} from "vuex"
+
+export default {
+  data() {
+    return {
+      addProjectData: {
+        title: "",
+        techs: "",
+        photo: "",
+        link: "",
+        description: "",
+      },
+    }
+  },
+  methods: {
+    addProjectFile(e) {
+      console.log(event.target)
+      this.addProjectData.photo = e.target.files[0];
+      console.log(this.addProjectData.photo)
+    },
+    ...mapActions('projects', ['addProject']),
+    async addNewProject() {
+      const projectFormData = new FormData();
+      projectFormData.append('title', this.addProjectData.title);
+      projectFormData.append('techs', this.addProjectData.techs);
+      projectFormData.append('photo', this.addProjectData.photo);
+      projectFormData.append('link', this.addProjectData.link);
+      projectFormData.append('description', this.addProjectData.description);
+      console.log(projectFormData)
+      try {
+        this.addProject(projectFormData);
+        this.$emit('cancelItem');
+      } catch (error) {
+
+      }
+    }
+  }
+}
+</script>
 
 <style lang="pcss">
 @import "normalize.css";
 @import url('../../../styles/mixins');
+
+input[type="file"] {
+  margin-top: 30px;
+}
 
 .projects__item {
   margin-top: 60px;
@@ -62,13 +108,14 @@
 
 .pojects__item-photo {
   width: 100%;
-  height: 280px;
+  min-height: 280px;
   padding: 70px 100px;
   border: 1px dashed #a1a1a1;
   background-color: #dee4ed;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .projects__item-photo-text {

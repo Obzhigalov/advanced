@@ -64,14 +64,14 @@ export default {
     },
     ...mapActions('feedbacks', ['addFeedback']),
     async addnewFeedback() {
-      try {
-        var reviewFormData = new FormData();
+      var reviewFormData = new FormData();
         reviewFormData.append('photo', this.addFeedbackData.photo);
         reviewFormData.append('author', this.addFeedbackData.author);
         reviewFormData.append('occ', this.addFeedbackData.occ);
         reviewFormData.append('text', this.addFeedbackData.text);
         console.log(reviewFormData);
-        this.addFeedback(reviewFormData);
+      try {
+        this.addFeedback(this.reviewFormData);
         this.$emit('cancelItem');
         } catch (error) {
 

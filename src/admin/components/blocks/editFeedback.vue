@@ -29,8 +29,7 @@ export default {
   data() {
     return {
       photoForRender: "",
-      renderedPhoto: "",
-      editedFeedback: ""
+      renderedPhoto: ""
     }
   },
   props: {
@@ -56,7 +55,6 @@ export default {
       try {
         reader.readAsDataURL(file);
         reader.onloadend  = () => {
-          console.log(reader.result);
           this.renderedPhoto = reader.result;
           //- this.getAbsoluteImgPath(reader.result);
         }
@@ -77,7 +75,6 @@ export default {
     }
   },
   created() {
-    console.log(this.currentFeedback)
   }
 }
 </script>

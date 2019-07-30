@@ -50,7 +50,6 @@ export default {
   methods: {
     ...mapActions('feedbacks', ['fetchFeedbacks']),
     editCurrentFeedback(editFeedbackData) {
-      console.log(editFeedbackData)
       this.editCategoryMode = true;
     }
   },

@@ -26,7 +26,6 @@ router.beforeEach(async (to, from, next) => {
       guard.defaults.headers["Authorization"] = `Bearer ${token}`;
 
       try {
-        console.log('11111111111')
         const response = await guard.get("/user");
         store.commit("user/SET_USER", response.data.user);
         next();
