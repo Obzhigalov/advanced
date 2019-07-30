@@ -1,17 +1,18 @@
 script(type='text-x/template')#skills-grid
   .skills__grid(ref="skills-grid")
-    .skills__wrap(v-for="skill in skills")
-      h4.skills__subtitle {{skill.skillsGroup}}
+    .skills__wrap(v-for="category in categories")
+      h4.skills__subtitle {{category.category}}
       skillsWrap(
-        :skill="skill"
+        :category="category"
+        :skills="filterSkillsByCategoryId(category.id)"
         )
 
 script(type='text/x-template')#skills__wrap
   ul.skills-list
-    li.skills-list__item(v-for="(skillPercent, skillName) in skill.skills") {{skillName}}
+    li.skills-list__item(v-for="skill in skills") {{skill.title}}
       skillsListItem(
-        :skillName="skillName",
-        :skillPercent="skillPercent"
+        :skillPercent="skill.percent"
+        :skillName="skill.title"
       )
 
 script(type='text/x-template')#skills-list__item

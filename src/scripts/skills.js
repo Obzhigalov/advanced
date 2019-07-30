@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import axios from "axios";
 
 const skillsListItem = {
   template: '#skills-list__item',
@@ -14,7 +15,7 @@ const skillsListItem = {
       getComputedStyle(circle).getPropertyValue('stroke-dasharray')
     );
     
-    const percent = (dashArray / 100) * (100 - this.skillPercent);
+    const percent = (dashArray / 100) * (115 - this.skillPercent);
     
     window.addEventListener('scroll', function(){
       const posTop = findBlockTop.findTop.getBoundingClientRect().top;
@@ -35,10 +36,14 @@ const skillsListItem = {
 const skillsWrap = {
   template: '#skills__wrap',
   props: {
-    skill: Object
+    skills: Array,
+    category: Object
   },
   components: {
     skillsListItem
+  },
+  methods: {
+    
   }
 }
 
@@ -50,12 +55,15 @@ new Vue({
   },
   data() {
     return {
+      categories: [],
       skills: []
     }
   },
   created() {
-    const data = require('../data/skills.json');
-    this.skills = data;
+    this.fetchCategories();
+    this.fetchSkills();
+    // const data = require('../data/skills.json');
+    // this.skills = data;
   },
   methods: {
     findCircle() {
@@ -63,6 +71,23 @@ new Vue({
       return {
         findTop: circleBlock
       };
-    }
+    },
+    fetchCategories() {
+      axios.get('https://webdev-api.loftschool.com/categories/153')
+        .then(response => {
+          this.categories = response.data;
+          console.log(this.categories)
+        })
+    },
+    fetchSkills() {
+        axios.get('https://webdev-api.loftschool.com/skills/153')
+        .then(response => {
+          this.skills = response.data;
+          console.log(this.skills)
+        })
+    },
+    filterSkillsByCategoryId(categoryId) {
+      return this.skills.filter(skill => skill.category === categoryId)
+    },
   }
 })
