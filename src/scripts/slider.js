@@ -1,4 +1,5 @@
 import Vue from "vue";
+import axios from "axios";
 
 const sliderList = {
   template: "#sliderList-template",
@@ -41,7 +42,7 @@ const sliderContent = {
   },
   computed: {
     tagsArray() {
-      return this.currentProject.skills.split(", ")
+      return this.currentProject.techs.split(",")
     }
   },
   components: {
@@ -75,10 +76,17 @@ new Vue ({
     }
   },
   methods: {
+    fetchProjects() {
+      axios.get('https://webdev-api.loftschool.com/works/153')
+        .then(response => {
+          console.log(response.data)
+          this.sliderData = this.makeArrWithRequiredImages(response.data);
+        })
+    },
     makeArrWithRequiredImages(data) {
       return data.map(item => {
-        const requiredPic = require(`../images/content/portfolio/${item.photo}`);
-        item.photo = requiredPic;
+        const absolutePic = `https://webdev-api.loftschool.com/${item.photo}`;
+        item.photo = absolutePic;
   
         return item;
       });
@@ -98,10 +106,11 @@ new Vue ({
     }
   },
   created() {
-    const data = require('../data/slider.json');
-    this.sliderData = data;
+    // const data = require('../data/slider.json');
+    // this.sliderData = data;
+    this.fetchProjects();
 
-    this.sliderData = this.makeArrWithRequiredImages(data);
+    this.sliderData = this.makeArrWithRequiredImages(this.sliderData);
 
     this.currentProject = this.sliderData[this.currentIndex];
   }

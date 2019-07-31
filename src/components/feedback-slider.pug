@@ -8,7 +8,7 @@ script(type="text/x-template")#feedbackSlider-template
         button(@click="next()", :class="{feedbackBtnOff: btnIndex === btnClicks}").feedback-slider__switch-item
           +icon('arrow-down', 'feedback-slider__switch-svg feedback-slider__switch-svg-next')
     .feedback-slider
-      flickity(ref="flickity" :options="flickityOptions")
+      flickity(ref="flickity" :options="flickityOptions" v-if="feedbackData.length > 0")
         li(v-for= 'feedback in feedbackData' :key="feedback.id").feedback-slider__item
           feedbackSliderItem(
             :feedback= "feedback"
@@ -20,8 +20,8 @@ script(type="text/x-template")#feedbackSliderItem-template
     .feedback-slider__item-text {{feedback.text}}
     .feedback-slider__item-content-wrap
       .feedback-slider__item-img-wrap
-        img(:src="feedback.avatar").feedback-slider__item-img
+        img(:src="feedback.photo").feedback-slider__item-img
       .feedback-slider__item-titles
-        h5.feedback-slider__item-title {{feedback.title}}
-        h6.feedback-slider__item-subtitle {{feedback.subtitle}}
+        h5.feedback-slider__item-title {{feedback.author}}
+        h6.feedback-slider__item-subtitle {{feedback.occ}}
         

@@ -71,7 +71,7 @@ export default {
 
 .add-btn {
   height: 100%;
-  min-height: 100%;
+  min-height: 250px;
   width: 100%;
   background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
   display: flex;
@@ -311,7 +311,7 @@ export default {
   }
 }
 .feedback__grid-add {
- 
+  
 
   @include phone {
     height: 100%;

@@ -5,7 +5,7 @@
     .feedback__item-edit-photo
       .feedback__item-edit-avatar(:style="{ backgroundImage : avatarPreview, backgroundSize : '100%' }")
       .feedback__item-edit-avatar-add Добавить фото
-      input(type="file" accept="image/jpeg" @change="renderFile").feedback__item-edit-avatar-load
+      input(type="file" accept="image/jpeg, image/png" @change="renderFile").feedback__item-edit-avatar-load
     label.feedback__item-edit-label
       .feedback__item-edit-label-title Имя автора
       input(type="text" v-model="addFeedbackData.author").feedback__item-edit-input
@@ -64,14 +64,15 @@ export default {
     },
     ...mapActions('feedbacks', ['addFeedback']),
     async addnewFeedback() {
-      var reviewFormData = new FormData();
+      
+      try {
+        var reviewFormData = new FormData();
         reviewFormData.append('photo', this.addFeedbackData.photo);
         reviewFormData.append('author', this.addFeedbackData.author);
         reviewFormData.append('occ', this.addFeedbackData.occ);
         reviewFormData.append('text', this.addFeedbackData.text);
         console.log(reviewFormData);
-      try {
-        this.addFeedback(this.reviewFormData);
+        this.addFeedback(reviewFormData);
         this.$emit('cancelItem');
         } catch (error) {
 
