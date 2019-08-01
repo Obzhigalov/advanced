@@ -116,6 +116,10 @@ input[type="file"] {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @include phone {
+    padding: 0;
+  }
 }
 
 .projects__item-photo-text {
