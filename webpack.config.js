@@ -9,7 +9,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = (env, argv) => {
   const isProductionBuild = argv.mode === "production";
-  const publicPath = '';
+  const publicPath = './';
 
   const pcss = {
     test: /\.(p|post|)css$/,
@@ -30,7 +30,6 @@ module.exports = (env, argv) => {
     loader: "babel-loader",
     exclude: /node_modules/,
     options: {
-      presets: ['@babel/preset-env'],
       plugins: ["@babel/plugin-syntax-dynamic-import"]
     }
   };
@@ -84,16 +83,6 @@ module.exports = (env, argv) => {
   };
 
   const config = {
-    entry: {
-      main: ["@babel/polyfill", "./src/main.js"],
-      admin: ["@babel/polyfill", "./src/admin/main.js"]
-    },
-    output: {
-      path: path.resolve(__dirname, "./dist"),
-      filename: "[name].[hash].build.js",
-      publicPath: isProductionBuild ? publicPath : "",
-      chunkFilename: "[chunkhash].js"
-    },
     module: {
       rules: [pcss, vue, js, files, svg, pug]
     },
@@ -153,6 +142,45 @@ module.exports = (env, argv) => {
       new OptimizeCSSAssetsPlugin({})
     ];
   }
+  
+  const mainConfig = {
+    ...config,
+    entry: {
+      main: "./src/main.js",
+    },
+    output: {
+      path: path.resolve(__dirname, "./dist"),
+      filename: "[name].[hash].build.js",
+      publicPath: isProductionBuild ? publicPath : "",
+      chunkFilename: "[chunkhash].js"
+    },
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: "src/index.pug"
+      }),
+      ...config.plugins
+    ]
+  };
 
-  return config;
+  const adminConfig = {
+    ...config,
+    name: "admin-config",
+    entry: {
+      admin: "./src/admin/main.js"
+    },
+    output: {
+      path: path.resolve(__dirname, "./dist/admin"),
+      filename: "[name].[hash].build.js",
+      publicPath: isProductionBuild ? publicPath : "",
+      chunkFilename: "[chunkhash].js"
+    },
+    plugins: [
+      ...config.plugins,
+      new HtmlWebpackPlugin({
+        template: "src/admin/index.pug"
+      })
+    ]
+  };
+  
+   return [mainConfig, adminConfig];
 };
