@@ -1,5 +1,7 @@
 import Vue from "vue";
 import Flickity from 'vue-flickity';
+import axios from "axios";
+
 
 const feedbackSliderItem = {
   template: '#feedbackSliderItem-template',
@@ -33,15 +35,24 @@ new Vue({
     }
   },
   methods: {
+    fetchFeedbacks() {
+      axios.get('https://webdev-api.loftschool.com/reviews/153')
+        .then(response => {
+          console.log(response)
+          this.feedbackData = this.makeArrWithRequiredImages(response.data);
+          console.log(this.feedbackData)
+        })
+    },
     makeArrWithRequiredImages(data) {
       return data.map(item => {
-        const requiredPic = require(`../images/content/${item.avatar}`);
-        item.avatar = requiredPic;
+        const absolutePic = `https://webdev-api.loftschool.com/${item.photo}`;
+        item.photo = absolutePic;
   
         return item;
       });
     },
     next() {
+      console.log(this.feedbackData)
       this.$refs.flickity.next();
       if(window.innerWidth < 480) {
         if(this.btnIndex < this.feedbackData.length - 1) {
@@ -64,7 +75,8 @@ new Vue({
     }
   },
   created() {
-    const data = require('../data/feedback.json');
-    this.feedbackData = this.makeArrWithRequiredImages(data);
+    this.fetchFeedbacks();
+    // this.feedbackData = this.makeArrWithRequiredImages(this.feedbackData);
+    console.log(this.feedbackData)
   }
 })

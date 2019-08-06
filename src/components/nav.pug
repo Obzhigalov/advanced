@@ -1,6 +1,14 @@
 .nav
   ul.nav__list
-    - var nav = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться']
-    each item in nav
       li.nav__list-item
-        a(href='#').nav__list-link #{item}
+        a(href='#main').nav__list-link Главная
+      li.nav__list-item
+        a(href='#about').nav__list-link Обо мне
+      li.nav__list-item
+        a(href='#skills').nav__list-link Навыки
+      li.nav__list-item
+        a(href='#portfolio').nav__list-link Работы
+      li.nav__list-item
+        a(href='#feedback').nav__list-link Отзывы
+      li.nav__list-item
+        a(href='#contact-me').nav__list-link Связаться

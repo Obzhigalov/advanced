@@ -50,11 +50,14 @@ class Validate {
         let formData = new FormData();
 
         formData.append('name', name);
+        formData.append('phone', '89091239900')
+        formData.append('comment', text);
         formData.append('to', email);
-        formData.append('text', text);
         if(isFormFullFilled) {
           fetch(`https://webdev-api.loftschool.com/sendmail`, {
             method: 'POST',
+            headers: {
+              "X-Requested-With":"XMLHttpRequest" },
             body: formData
           }).then((response) => {
             return response.json();

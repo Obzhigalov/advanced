@@ -1,5 +1,5 @@
 script(type="text/x-template")#slider-template
-  .slider-wrap(:data-slide="currentIndex + 1")
+  .slider-wrap(:data-slide="currentIndex + 1" v-if="sliderData.length > 0")
     sliderDisplay(
       :sliderData='sliderData'
       :currentProject='currentProject'
@@ -28,9 +28,9 @@ script(type="text/x-template")#sliderList-template
     .slider__list
       button.slider__list-item(
         type="button"
-        v-for='item in sliderData'
+        v-for='(item, index) in sliderData'
         :class="{sliderListItemActive: item.id === currentProject.id}"
-        @click="$emit('choose', item.id - 1)"
+        @click="$emit('choose', index)"
       )
         img(:src='item.photo' alt="Проект Андрея Обжигалов из портфолио").slider__list-item-pic
 
@@ -50,7 +50,7 @@ script(type="text/x-template")#sliderContent-template
       .description__content
         h4.description__title {{currentProject.title}}
         .description__info
-          p {{currentProject.info}}
+          p {{currentProject.description}}
         a.description__link(:href="currentProject.link") Посмотреть сайт
           +icon('link', 'description__link-svg')
 
