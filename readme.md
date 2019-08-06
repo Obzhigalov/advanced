@@ -1,7 +1,7 @@
 # Учебный шаблон проекта Portfolio
 Ссылка на GitHub Pages:
 https://obzhigalov.github.io/advanced/dist/index.html
-https://obzhigalov.github.io/advanced/dist/index.html/admin
+https://obzhigalov.github.io/advanced/dist/admin
 
 > Перед установкой зависимостей и запуском проекта убедитесь, что у вас установлена [последняя версия Node.js & NPM](https://nodejs.org/en/download/current/), а так же 
 [последняя версия Yarn](https://yarnpkg.com/ru/docs/install)
